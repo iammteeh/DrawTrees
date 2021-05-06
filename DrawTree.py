@@ -34,11 +34,11 @@ def induce_order(tree):
         if not node.is_leaf() or len(node.get_children()) != 0:
             node.add_features(lmost_sibling=node.children[0], rmost_sibling=node.children[len(node.get_children())-1])
         # set features for buchheim
-        node.add_features(mod=0, thread=0, shift=0, change=0)
+        node.add_features(mod=0, thread=0, shift=0, change=0, prelim_x=0)
         node.add_features(ancestor=node)
         i += 1
 
-## some test functions
+## helper functions
 def left_sibling(node):
     left_sibling = None
     if node.up:
@@ -55,6 +55,7 @@ def set_prelim_coords(tree):
     for node in tree.traverse():
         if node.is_leaf(): node.add_features(prelim_x=node.depth)
     #    if len(node.get_children()) == 1 && (node.idx+1 && node.depth ==
+
 ##
 
 ## buchheim       
@@ -81,27 +82,24 @@ def move_subtree(w_minus,w_plus,shift):
 def execute_shifts(node):
     shift = 0
     change = 0
-    for children in reversed(node):
+    for children in reversed(node.get_descendants()):
         children.prelim_x += shift
         children.mod += shift
         change += children.change
-        shift = shift + children.shift + change
+        shift += children.shift + change
         
 def ancestor(v_i_minus,node,default_ancestor):
-    if v_i_minus.up in v.up.get_children():
+    if v_i_minus.up in node.up.get_children():
         return v_i_minus.up
     else:
         return default_ancestor
 
-def has_left_child(node):
-    node.idx != node.up.children[0].idx
-    node
-    
 def apportion(node,default_ancestor):
-    if left_sibling(node):
+    w = left_sibling(node)
+    if w != None:
         v_i_plus = v_o_plus = node
-        v_i_minus = left_sibling(node)
-        v_o_minus = v_i_plus.children[0]
+        v_i_minus = w
+        v_o_minus = v_i_plus.up.children[0] # left most sibling
         s_i_plus = v_i_plus.mod
         s_o_plus = v_o_plus.mod
         s_i_minus = v_i_minus.mod
@@ -109,7 +107,7 @@ def apportion(node,default_ancestor):
         while next_right(v_i_minus) != 0 and next_left(v_i_plus) != 0:
             v_i_minus = next_right(v_i_minus)
             v_i_plus = next_left(v_i_plus)
-            v_o_minus = lext_left(v_o_minus)
+            v_o_minus = next_left(v_o_minus)
             v_o_plus = next_right(v_o_plus)
             v_o_plus.add_features(ancestor=node)
             shift = (v_i_minus.prelim_x + s_i_minus) - (v_i_plus.prelim_x + s_i_plus) + distance
@@ -121,27 +119,27 @@ def apportion(node,default_ancestor):
             s_i_plus += v_i_plus.mod
             s_o_minus += v_o_minus.mod
             s_o_plus += v_o_plus.mod
-    if next_right(v_i_minus) != 0 and next_right(v_o_plus) = 0:
-        v_o_plus.thread = next_right(v_i_minus)
-        v_o_plus.mod += s_i_minus - s_o_plus
-    if next_left(v_i_plus) != 0 and next_lext(v_o_minus) = 0:
-        v_o_minus.thread = next_left(v_i_plus)
-        v_o_minus.mod += s_i_plus - s_o_minus
-        default_ancestor = node
+        if next_right(v_i_minus) != 0 and next_right(v_o_plus) == 0:
+            v_o_plus.thread = next_right(v_i_minus)
+            v_o_plus.mod += s_i_minus - s_o_plus
+        if next_left(v_i_plus) != 0 and next_left(v_o_minus) == 0:
+            v_o_minus.thread = next_left(v_i_plus)
+            v_o_minus.mod += s_i_plus - s_o_minus
+            default_ancestor = node
+    return default_ancestor
         
 def first_walk(node):
     if node.is_leaf():
         node.add_features(prelim_x=0)
     else:
-        default_ancestor = node.children[0]
-        for children in node: # TEST
+        default_ancestor = node.children[0] # left most child
+        for children in node:
             first_walk(children)
             apportion(children,default_ancestor)
         execute_shifts(node)
-        midpoint = 1/2(node.children[0].prelim_x + node.children[len(node.get_children())-1])
+        midpoint = 1/2*(node.children[0].prelim_x + node.children[len(node.get_children())-1].prelim_x)
         if left_sibling(node):
-            node.add_features(prelim_x=left_sibling().prelim_x + distance, \ 
-                             mod=node.prelim_x - midpoint)
+            node.add_features(prelim_x=left_sibling().prelim_x + distance,mod=node.prelim_x - midpoint)
         else:
             node.add_features(prelim_x=midpoint)
 
