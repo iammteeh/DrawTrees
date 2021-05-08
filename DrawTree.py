@@ -45,9 +45,9 @@ def induce_order(tree):
 def left_sibling(node):
     left_sibling = None
     if node.up:
-        for children in node.up.get_children():
-            if children == node : return left_sibling
-            else: left_sibling = children
+        for child in node.up.children:
+            if child == node : return left_sibling
+            else: left_sibling = child
     return left_sibling
         
 def set_lrmost_level(tree):
@@ -138,11 +138,11 @@ def first_walk(node):
     else:
         default_ancestor = node.children[0] # left most child
         print('set default ancestor' + str(default_ancestor.idx))
-        for children in node:
-            print('start first walk for' + str(children.idx))
-            first_walk(children)
-            print('start apportion for' + str(children.idx) + 'with default ancestor' + str(default_ancestor.idx))
-            apportion(children,default_ancestor)
+        for child in node.children:
+            print('start first walk for' + str(child.idx))
+            first_walk(child)
+            print('start apportion for' + str(child.idx) + 'with default ancestor' + str(default_ancestor.idx))
+            apportion(child,default_ancestor)
         print('execute shifts for node' + str(node.idx))
         execute_shifts(node)
         midpoint = 1/2*(node.children[0].prelim_x + node.children[len(node.get_children())-1].prelim_x)
@@ -154,9 +154,9 @@ def first_walk(node):
 def second_walk(node,m):
     print('wright final coordinates')
     node.add_features(x=node.prelim_x + m, y=node.depth)
-    for children in node:
-        print('second walk for' + str(children.idx))
-        second_walk(children,m + node.mod)
+    for child in node.children:
+        print('second walk for' + str(child.idx))
+        second_walk(child,m + node.mod)
         
 def buchheim(tree):
     print('start buchheim walk')
