@@ -104,7 +104,7 @@ def ancestor(v_i_minus,node,default_ancestor):
 
 def apportion(node,default_ancestor):
     w = left_sibling(node)
-    if w != None:
+    if w != False:
         v_i_plus = v_o_plus = node
         v_i_minus = w
         v_o_minus = v_i_plus.up.children[0] # left most sibling
@@ -153,8 +153,8 @@ def first_walk(node):
         print('execute shifts for node ' + str(node.idx))
         execute_shifts(node)
         midpoint = 1/2*(node.children[0].prelim_x + node.children[len(node.get_children())-1].prelim_x)
-        if left_sibling(node) != node:
-            node.add_features(prelim_x=left_sibling().prelim_x + distance,mod=node.prelim_x - midpoint)
+        if left_sibling(node) != False:
+            node.add_features(prelim_x=left_sibling(node).prelim_x + distance,mod=node.prelim_x - midpoint)
         else:
             node.add_features(prelim_x=midpoint)
 
