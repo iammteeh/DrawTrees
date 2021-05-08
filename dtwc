@@ -1,11 +1,3 @@
-#from os import listdir, walk
-#from os.path import isfile, join
-import inspect
-import newick
-from ete3 import Tree
-import matplotlib.pyplot as plt
-import networkx as nx
-
 ## parse with newick
 def newick(file):
     return newick.read(file) # returns a list of newick.Node
@@ -28,7 +20,7 @@ def induce_order(tree):
     for node in tree.traverse():
         # set depth and index
         node.add_features(depth=get_lvl(node), idx=i)
-        #print('set depth=' + str(node.depth) + "and idx=" + str(node.idx) + 'for node ' + str(node.idx))
+        #print('set depth=' + str(node.depth) + "and idx=" + str(node.idx) + 'for node ' + str(node.name))
         # for binary trees
         if len(node.get_children()) == 2:
             node.add_features(left=node.children[0],right=node.children[1])
@@ -96,6 +88,10 @@ def ancestor(v_i_minus,node,default_ancestor):
     else:
         return default_ancestor
 
+def has_left_child(node):
+    node.idx != node.up.children[0].idx
+    node
+    
 def apportion(node,default_ancestor):
     w = left_sibling(node)
     if w != None:
@@ -131,19 +127,19 @@ def apportion(node,default_ancestor):
     return default_ancestor
         
 def first_walk(node):
-    print('start first walk for' + str(node.idx))
+    print('start first walk for' + str(node.name))
     if node.is_leaf():
         node.add_features(prelim_x=0)
         print('reached leafs')
     else:
         default_ancestor = node.children[0] # left most child
-        print('set default ancestor' + str(default_ancestor.idx))
+        print('set default ancestor' + str(default_ancestor.name))
         for children in node:
-            print('start first walk for' + str(children.idx))
+            print('start first walk for' + str(children.name))
             first_walk(children)
-            print('start apportion for' + str(children.idx) + 'with default ancestor' + str(default_ancestor.idx))
+            print('start apportion for' + str(children.name) + 'with default ancestor' + str(default_ancestor.name))
             apportion(children,default_ancestor)
-        print('execute shifts for node' + str(node.idx))
+        print('execute shifts for node' + str(node.name))
         execute_shifts(node)
         midpoint = 1/2*(node.children[0].prelim_x + node.children[len(node.get_children())-1].prelim_x)
         if left_sibling(node):
@@ -152,20 +148,19 @@ def first_walk(node):
             node.add_features(prelim_x=midpoint)
 
 def second_walk(node,m):
-    print('wright final coordinates')
-    node.add_features(x=node.prelim_x + m, y=node.depth)
+    node.add_features(x=node.prelim_x + m, \
+                      y=node.depth)
     for children in node:
-        print('second walk for' + str(children.idx))
         second_walk(children,m + node.mod)
         
 def buchheim(tree):
     print('start buchheim walk')
     induce_order(tree)
     root = tree.get_tree_root()
-    print('set root=' + str(root.idx))
-    print('start first walk for root' + str(root.idx))
+    print('set root=' + str(root.name))
+    print('start first walk for root' + str(root.name))
     first_walk(root)
-    print('start second walk for root' + str(root.idx))
+    print('start second walk for root' + str(root.name))
     second_walk(root,-root.prelim_x)
     #return tree
     print('finished')
@@ -180,11 +175,3 @@ def DrawTree(tree):
         for children in node:
             NX.add_edge(node, children)
     nx.draw(NX, with_labels=True, font_weight='bold')
-# test field
-string = '((C)A,(D)B)F;'
-file = 'phyliptree.nh'
-tree = ete3(file,1) # choose to parse with newick or ete3
-distance = 1
-
-print(tree)
-buchheim(tree)
