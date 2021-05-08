@@ -53,7 +53,7 @@ def left_sibling(node):
             else: 
                 left_sibling = child
     
-    print('left sibling of ' + str(node.idx) + ' is: ' + str(child.idx if left_sibling!=False or child!=False else False))
+    print('left sibling of ' + str(node.idx) + ' is: ' + str(child.idx if left_sibling!=False else False))
     return left_sibling
         
 def set_lrmost_level(tree):
@@ -159,7 +159,7 @@ def first_walk(node):
             node.add_features(prelim_x=midpoint)
 
 def second_walk(node,m):
-    print('wright final coordinates for node ' + str(node.idx))
+    print('write final coordinates for node ' + str(node.idx))
     node.add_features(x=node.prelim_x + m, y=node.depth)
     for child in node.children:
         print('second walk for ' + str(child.idx))
