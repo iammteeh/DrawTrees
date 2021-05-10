@@ -37,7 +37,6 @@ def induce_order(tree):
             node.add_features(lmost_sibling=node.children[0], rmost_sibling=node.children[len(node.get_children())-1])
         # set features for buchheim
         node.add_features(mod=0, thread=0, shift=0, change=0, prelim_x=0)
-        node.add_features(ancestor=node)
         i += 1
     logging.info('successfully induced order')
 
@@ -130,9 +129,9 @@ def first_walk(node):
     if node.is_leaf():
         logging.info('reached leaf')
         if node.up.children[0] != node:
-            node.add_features(prelim_x=left_sibling(node).prelim_x+distance)
+            node.prelim_x = left_sibling(node).prelim_x + distance
         else:
-            node.add_features(prelim_x=0)
+            node.prelim_x = 0
         logging.info('set prelim_x for ' + str(node.idx))
     else:
         default_ancestor = node.children[0] # left most child
@@ -146,9 +145,10 @@ def first_walk(node):
         execute_shifts(node)
         midpoint = 1/2*(node.children[0].prelim_x + node.children[len(node.get_children())-1].prelim_x)
         if left_sibling(node) != False:
-            node.add_features(prelim_x=left_sibling(node).prelim_x + distance,mod=node.prelim_x - midpoint)
+            node.prelim_x = left_sibling(node).prelim_x + distance
+            node.mod= node.prelim_x - midpoint
         else:
-            node.add_features(prelim_x=midpoint)
+            node.prelim_x = midpoint
 
 def second_walk(node,m):
     logging.info('write final coordinates for node ' + str(node.idx))
