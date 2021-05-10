@@ -55,15 +55,6 @@ def left_sibling(node):
     
     print('left sibling of ' + str(node.idx) + ' is: ' + str(child.idx if left_sibling!=False else False))
     return left_sibling
-        
-def set_lrmost_level(tree):
-    for node in tree.traverse():
-        return iter(node.depth)
-
-def set_prelim_coords(tree):
-    for node in tree.traverse():
-        if node.is_leaf(): node.add_features(prelim_x=node.depth)
-    #    if len(node.get_children()) == 1 && (node.idx+1 && node.depth ==
 ##
 
 ## buchheim       
@@ -81,11 +72,11 @@ def next_right(node):
     
 def move_subtree(w_minus,w_plus,shift):
     subtrees = w_plus.idx - w_minus.idx
-    w_plus.change = w_plus.change - shift / subtrees
-    w_plus.shift = w_plus.shift + shift
-    w_minus.change = w_minus.change + shift / subtrees
-    w_plus.prelim_x = w_plus.prelim_x + shift
-    w_plus.mod = w_plus.mod + shift
+    w_plus.change -= shift / subtrees
+    w_plus.shift += shift
+    w_minus.change += shift / subtrees
+    w_plus.prelim_x += shift
+    w_plus.mod += shift
     
 def execute_shifts(node):
     shift = 0
@@ -97,7 +88,7 @@ def execute_shifts(node):
         shift += child.shift + change
         
 def ancestor(v_i_minus,node,default_ancestor):
-    if v_i_minus.up in node.up.get_children():
+    if v_i_minus.up in node.up.get_children(): # ancestor of v_i_minus is a sibling of node
         return v_i_minus.up
     else:
         return default_ancestor
