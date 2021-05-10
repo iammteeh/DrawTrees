@@ -41,7 +41,7 @@ def induce_order(tree):
         i += 1
     logging.info('successfully induced order')
 
-## some test functions
+## buchheim       
 def left_sibling(node):
     logging.info('get left sibling for ' + str(node.idx))
     left_sibling = False
@@ -55,9 +55,7 @@ def left_sibling(node):
     
     logging.info('left sibling of ' + str(node.idx) + ' is: ' + str(child.idx if left_sibling!=False else False))
     return left_sibling
-##
 
-## buchheim       
 def next_left(node):
     if len(node.get_children()) != 0:
         return node.children[0]
@@ -183,12 +181,19 @@ def DrawTree(tree):
     pos=nx.get_node_attributes(Tree,'pos')
     nx.draw(Tree,pos, with_labels=True)
 
-# test field
-debugging_on = 0
-string = '((C)A,(D)B)F;'
-file = 'phyliptree.nh'
-tree = ete3(file,1) # choose to parse with newick or ete3
-distance = 1
+# sys
+logging.getLogger().setLevel(logging.WARNING)
 
-print(tree)
-buchheim(tree)
+# input
+string = '((C)A,(D)B)F;'
+#file = 'phyliptree.nh'
+file = './bt/hg38.100way.nh'
+
+# customization
+distance = 1
+x = 10 # figure size x
+y = 10 # figure size y
+
+# execution
+tree = ete3(file,1) # choose to parse with newick or ete3
+DrawTree(tree)
