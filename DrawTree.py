@@ -90,11 +90,11 @@ def move_subtree(w_minus,w_plus,shift):
 def execute_shifts(node):
     shift = 0
     change = 0
-    for children in reversed(node.get_descendants()):
-        children.prelim_x += shift
-        children.mod += shift
-        change += children.change
-        shift += children.shift + change
+    for child in reversed(node.get_children()):
+        child.prelim_x += shift
+        child.mod += shift
+        change += child.change
+        shift += child.shift + change
         
 def ancestor(v_i_minus,node,default_ancestor):
     if v_i_minus.up in node.up.get_children():
