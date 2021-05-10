@@ -48,7 +48,7 @@ def left_sibling(node):
     if node.up:
         for child in node.up.children:
             if child == node : 
-                print('left sibling of ' + str(node.idx) + ' is: ' + str(left_sibling.idx if left_sibling!=False else False))
+                logging.info('left sibling of ' + str(node.idx) + ' is: ' + str(left_sibling.idx if left_sibling!=False else False))
                 return left_sibling
             else: 
                 left_sibling = child
@@ -181,7 +181,7 @@ def DrawTree(tree):
         for child in node.children:
             Tree.add_edge(node.idx, child.idx)
     pos=nx.get_node_attributes(Tree,'pos')
-    nx.draw(Tree,pos, with_labels=True,)
+    nx.draw(Tree,pos, with_labels=True)
 
 # test field
 debugging_on = 0
