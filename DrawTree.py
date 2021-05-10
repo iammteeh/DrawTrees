@@ -1,6 +1,6 @@
 #from os import listdir, walk
 #from os.path import isfile, join
-import inspect
+import logging
 import newick
 from ete3 import Tree
 import matplotlib.pyplot as plt
@@ -23,7 +23,7 @@ def get_lvl(node):
     return lvl
 
 def induce_order(tree):
-    print('inducing order')
+    logging.info('inducing order')
     i = 0 # maybe set to 1 initially
     for node in tree.traverse():
         # set depth and index
@@ -39,11 +39,11 @@ def induce_order(tree):
         node.add_features(mod=0, thread=0, shift=0, change=0, prelim_x=0)
         node.add_features(ancestor=node)
         i += 1
-    print('successfully induced order')
+    logging.info('successfully induced order')
 
 ## some test functions
 def left_sibling(node):
-    print('get left sibling for ' + str(node.idx))
+    logging.info('get left sibling for ' + str(node.idx))
     left_sibling = False
     if node.up:
         for child in node.up.children:
@@ -53,7 +53,7 @@ def left_sibling(node):
             else: 
                 left_sibling = child
     
-    print('left sibling of ' + str(node.idx) + ' is: ' + str(child.idx if left_sibling!=False else False))
+    logging.info('left sibling of ' + str(node.idx) + ' is: ' + str(child.idx if left_sibling!=False else False))
     return left_sibling
 ##
 
@@ -128,20 +128,23 @@ def apportion(node,default_ancestor):
     return default_ancestor
         
 def first_walk(node):
-    print('start first walk for ' + str(node.idx))
+    logging.info('start first walk for ' + str(node.idx))
     if node.is_leaf():
-        print('reached leaf')
-        node.add_features(prelim_x=0)
-        print('set prelim_x for ' + str(node.idx))
+        logging.info('reached leaf')
+        if node.up.children[0] != node:
+            node.add_features(prelim_x=left_sibling(node).prelim_x+distance)
+        else:
+            node.add_features(prelim_x=0)
+        logging.info('set prelim_x for ' + str(node.idx))
     else:
         default_ancestor = node.children[0] # left most child
-        print('set default ancestor ' + str(default_ancestor.idx))
+        logging.info('set default ancestor ' + str(default_ancestor.idx))
         for child in node.children:
-            print('start first walk for ' + str(child.idx))
+            logging.info('start first walk for ' + str(child.idx))
             first_walk(child)
-            print('start apportion for ' + str(child.idx) + ' with default ancestor ' + str(default_ancestor.idx))
+            logging.info('start apportion for ' + str(child.idx) + ' with default ancestor ' + str(default_ancestor.idx))
             apportion(child,default_ancestor)
-        print('execute shifts for node ' + str(node.idx))
+        logging.info('execute shifts for node ' + str(node.idx))
         execute_shifts(node)
         midpoint = 1/2*(node.children[0].prelim_x + node.children[len(node.get_children())-1].prelim_x)
         if left_sibling(node) != False:
@@ -150,28 +153,28 @@ def first_walk(node):
             node.add_features(prelim_x=midpoint)
 
 def second_walk(node,m):
-    print('write final coordinates for node ' + str(node.idx))
+    logging.info('write final coordinates for node ' + str(node.idx))
     node.add_features(x=node.prelim_x + m, y=node.depth)
     for child in node.children:
-        print('second walk for ' + str(child.idx))
+        logging.info('second walk for ' + str(child.idx))
         second_walk(child,m + node.mod)
         
 def buchheim(tree):
-    print('start buchheim walk')
+    logging.info('start buchheim walk')
     induce_order(tree)
     root = tree.get_tree_root()
-    print('set root=' + str(root.idx))
-    print('start first walk for root ' + str(root.idx))
+    logging.info('set root=' + str(root.idx))
+    logging.info('start first walk for root ' + str(root.idx))
     first_walk(root)
-    print('start second walk for root ' + str(root.idx))
+    logging.info('start second walk for root ' + str(root.idx))
     second_walk(root,-root.prelim_x)
     #return tree
-    print('finished')
+    logging.info('finished')
             
 # create nx graph
 def DrawTree(tree):
     buchheim(tree)
-    print('start drawing')
+    logging.info('start drawing')
     Tree = nx.DiGraph()
     for node in tree.traverse():
         Tree.add_node(node.idx,pos=(node.x,-node.y))
@@ -179,7 +182,9 @@ def DrawTree(tree):
             Tree.add_edge(node.idx, child.idx)
     pos=nx.get_node_attributes(Tree,'pos')
     nx.draw(Tree,pos, with_labels=True,)
+
 # test field
+debugging_on = 0
 string = '((C)A,(D)B)F;'
 file = 'phyliptree.nh'
 tree = ete3(file,1) # choose to parse with newick or ete3
