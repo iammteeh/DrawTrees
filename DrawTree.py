@@ -181,12 +181,13 @@ def buchheim(tree):
 def DrawTree(tree):
     buchheim(tree)
     print('start drawing')
-    NX = nx.Graph()
+    Tree = nx.DiGraph()
     for node in tree.traverse():
-        NX.add_node(node)
-        for children in node:
-            NX.add_edge(node, children)
-    nx.draw(NX, with_labels=True, font_weight='bold')
+        Tree.add_node(node.idx,pos=(node.x,-node.y))
+        for child in node.children:
+            Tree.add_edge(node.idx, child.idx)
+    pos=nx.get_node_attributes(Tree,'pos')
+    nx.draw(Tree,pos, with_labels=True,)
 # test field
 string = '((C)A,(D)B)F;'
 file = 'phyliptree.nh'
