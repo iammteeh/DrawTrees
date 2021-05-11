@@ -14,6 +14,15 @@ def newick(file):
 def ete3(file,format):
     return Tree(file,format=format)
 
+## parse graphml files
+def graphml_to_ete3(file):
+    g = nx.readwrite.read_graphml(file,node_type=str,edge_key_type=int)
+    succ = nx.dfs_successors(g)
+    gmltree = Tree()
+    for w in succ:
+        gmltree.add_child(name=succ[w])
+    return gmltree
+
 ## init functions
 def get_lvl(node):
     lvl = 1
@@ -195,5 +204,5 @@ x = 10 # figure size x
 y = 10 # figure size y
 
 # execution
-tree = ete3(file,1) # choose to parse with newick or ete3
+tree = ete3(file,1) # choose to parse with newick(file), ete3(file,format) or graphml_to_ete3(file)
 DrawTree(tree)
