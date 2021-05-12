@@ -14,14 +14,20 @@ def newick(file):
 def ete3(file,format):
     return Tree(file,format=format)
 
-## parse graphml files
-def graphml_to_ete3(file):
-    g = nx.readwrite.read_graphml(file,node_type=str,edge_key_type=int)
-    succ = nx.dfs_successors(g)
-    gmltree = Tree()
-    for w in succ:
-        gmltree.add_child(name=succ[w])
+## make tree out of graphml forest
+def graphml_forest_to_ete3_tree(file):
+    g = nx.readwrite.read_graphml(file,node_type=str,edge_key_type=int) # read graphml
+    gmltree = Tree() # create tree object
+    components = nx.number_connected_components(g) # get components
+    subgraph = [g.subgraph(c).copy() for c in nx.connected_components(g)] # generate subgraphs
+    for component in nx.connected_components(g):    # for each component create subtree
+        gmltree.add_child(name=component.pop())
+    for graph in subgraph:
+        for child in nx.dfs_successors(graph):
+            gmltree.add_child(name=child.name)
     return gmltree
+
+
 
 ## init functions
 def get_lvl(node):
