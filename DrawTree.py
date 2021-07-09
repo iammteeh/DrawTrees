@@ -17,7 +17,7 @@ def ete3(file,format):
 ## make tree out of graphml forest
 def graphml_forest_to_ete3_tree(file):
     g = nx.readwrite.read_graphml(file,node_type=str,edge_key_type=int) # read graphml
-    gmltree = Tree() # create tree object
+    gmltree = Tree() # create ete3 tree object
     components = nx.number_connected_components(g) # get components
     subgraph = [g.subgraph(c).copy() for c in nx.connected_components(g)] # generate subgraphs
     for component in nx.connected_components(g):    # for each component create subtree
