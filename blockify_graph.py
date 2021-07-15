@@ -9,62 +9,8 @@ def blockify_graph(G):
         nx.set_node_attributes(G, { node : [node] }, 'block')
         nx.set_node_attributes(G, { node : 'empty' }, 'pi')
     add_dummy_vertices(G)
+    block_dict = generate_block_dict(G)
 
-
-def add_dummy_vertices_create_blocklist(G):
-    edges_to_add = []
-    edges_to_remove = []
-
-    # TODO there was an error with 'dictionary changed size during iteration'
-    #  -> could not find it
-    #  -> this is the solution
-    edges = copy.deepcopy(G.edges)
-
-    block_list = [] # should ideally result in a 'propritary' subgraph where 
-
-    for node in G.nodes:
-        block_list.append([node])
-
-    for edge in edges:
-        try:
-            edge_from, edge_to, weight = edge
-        except ValueError:
-            edge_from, edge_to = edge
-
-        y_attributes = nx.get_node_attributes(G, 'y')
-        child_position_attributes = nx.get_node_attributes(G, 'child_position')
-        difference = y_attributes[edge_to] - y_attributes[edge_from]
-        if difference != 1:
-            G.remove_edge(edge_from, edge_to)
-            edges_to_remove.append((edge_from, edge_to))
-            node_counter = 1
-            current_node = edge_from
-            current_block = []
-            block_identifier = "dummy" + "_" + edge_from + "_" + edge_to
-            while difference > 1:
-                new_node_name = str(node_counter) + "_" + block_identifier
-                if node_counter == 1:
-                    child_position = child_position_attributes[edge_to]
-                else:
-                    child_position = 0
-                G.add_node(new_node_name,
-                                    y=y_attributes[edge_from] + node_counter,
-                                    name=new_node_name,
-                                    child_position=child_position,
-                                    is_dummy=True)
-                current_block.append(new_node_name)
-                edges_to_add.append((current_node, new_node_name))
-                G.add_edge(current_node, new_node_name, weight=1)
-                current_node = new_node_name
-                difference -= 1
-                node_counter += 1
-                y_attributes = nx.get_node_attributes(G, 'y')
-                child_position_attributes = nx.get_node_attributes(G, 'child_position')
-            G.add_edge(current_node, edge_to, weight=1)
-            block_list.append(current_block)
-            nx.set_node_attributes(G, { block_identifier : current_block }, 'block')
-
-    return block_list
 
 def initialize_block_position(G, block_list: []):
     random.shuffle(block_list)
@@ -96,18 +42,6 @@ def get_block_to_node(node: str, block_list: [str]):
             return block
 
     raise Exception('Block To Node Not Found')
-
-def upper(block: [str]):
-    if "dummy" in block[0]:
-        return "1_" + block[0]
-    else:
-        return block[0]
-
-def lower(block: [str]):
-    if "dummy" in block[0]:
-        return str(len(block) + 1) + "_" + block[0][2:]
-    else:
-        return block[0]
 
 def add_dummy_vertices(G):
     node_levels = nx.get_node_attributes(G, 'level')
@@ -196,6 +130,27 @@ def generate_block_dict(G):
     for node, block_id in G.nodes(data='block_id'):
         block_dict["block_id"] = get_nodes_by_block_id(G, block_id)
     return block_dict
+
+def upper(block: []):
+    if "dummy" in block[0]:
+        return "1_" + block[0]
+    else:
+        return block[0]
+
+def lower(block: []):
+    if "dummy" in block[0]:
+        return str(len(block) + 1) + "_" + block[0][2:]
+    else:
+        return block[0]
+
+def get_neighbors_of_block(G, block, direction):
+    N = []
+    if direction == 'in':
+        G.in_edges(block)
+    elif direction == 'out':
+        G.out_edges(block)
+    return N
+
 
 def is_proper(G):
     node_levels = nx.get_node_attributes(G, 'level')
