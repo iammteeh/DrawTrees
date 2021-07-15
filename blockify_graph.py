@@ -43,6 +43,18 @@ def get_block_to_node(node: str, block_list: [str]):
 
     raise Exception('Block To Node Not Found')
 
+def upper(block: [str]):
+    if "dummy" in block[0]:
+        return "1_" + block[0]
+    else:
+        return block[0]
+
+def lower(block: [str]):
+    if "dummy" in block[0]:
+        return str(len(block) + 1) + "_" + block[0][2:]
+    else:
+        return block[0]
+
 def add_dummy_vertices(G):
     node_levels = nx.get_node_attributes(G, 'level')
     edges = copy.deepcopy(G.edges)
@@ -131,17 +143,13 @@ def generate_block_dict(G):
         block_dict["block_id"] = get_nodes_by_block_id(G, block_id)
     return block_dict
 
-def upper(block: []):
-    if "dummy" in block[0]:
-        return "1_" + block[0]
-    else:
-        return block[0]
+# upper(block_dict[block_id])
+def upper(block):
+    return block[0]
 
-def lower(block: []):
-    if "dummy" in block[0]:
-        return str(len(block) + 1) + "_" + block[0][2:]
-    else:
-        return block[0]
+# lower(block_dict[block_id])
+def lower(block):
+    return block[len(block)-1]
 
 def get_neighbors_of_block(G, block, direction):
     N = []
@@ -150,7 +158,6 @@ def get_neighbors_of_block(G, block, direction):
     elif direction == 'out':
         G.out_edges(block)
     return N
-
 
 def is_proper(G):
     node_levels = nx.get_node_attributes(G, 'level')
