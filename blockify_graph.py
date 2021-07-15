@@ -128,16 +128,16 @@ def add_dummy_vertices(G):
             
             if dummy_counter == 1 and span == 2:
                 logging.debug('case dc==1 s==2')
-                dummy_node_name = str(edge[0]) + 'd' + str(edge[1])
+                dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
-                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, ) # TODO
+                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, ) # TODO NAMING
                 G.add_edge(edge[0],dummy_node_name)
                 G.add_edge(dummy_node_name,edge[1])
                 logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
             
             elif dummy_counter == 1 and span > 2:
                 logging.debug('case dc==1 s>2')
-                dummy_node_name = str(edge[0]) + '->d' + str(dummy_counter)
+                dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
                 G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, ) # TODO
                 G.add_edge(edge[0],dummy_node_name)
@@ -146,7 +146,7 @@ def add_dummy_vertices(G):
             elif dummy_counter > 1 and span > 2:
                 logging.debug('case dc>1 s>2')
                 dummy_node_predecessor_name = block_list[dummy_counter-2] 
-                dummy_node_name = 'd' + str(dummy_counter-1) + '->d' + str(dummy_counter)
+                dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
                 G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, ) # TODO
                 G.add_edge(dummy_node_predecessor_name,dummy_node_name)
@@ -155,7 +155,7 @@ def add_dummy_vertices(G):
             elif dummy_counter > 1 and span == 2:
                 logging.debug('case dc>1 s==2')
                 dummy_node_predecessor_name = block_list[dummy_counter-2] 
-                dummy_node_name = 'd' + str(dummy_counter-1) + '->d' + str(edge[1])
+                dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
                 G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, ) # TODO
                 G.add_edge(dummy_node_predecessor_name,dummy_node_name)
@@ -176,15 +176,36 @@ def add_dummy_vertices(G):
 
     return is_proper(G)
 
-def define_neighbor_sets(G):
-    return 0
+def get_blocks(G):
+    block_ids = []
+    for node, block_id in G.nodes(data='block_id'):
+        block_ids.append(block_id)
+    block_list = list(set(block_ids))
+    return block_list
+
+def get_nodes_by_block_id(G, block_id):
+    node_list = []
+    for node, block in G.nodes(data='block_id'):
+        if block == block_id:
+            node_list.append(node)
+    return node_list
+
+def generate_block_dict(G):
+    block_dict = {}
+    block_list = get_blocks(G)
+    for node, block_id in G.nodes(data='block_id'):
+        block_dict["block_id"] = get_nodes_by_block_id(G, block_id)
+    return block_dict
 
 def is_proper(G):
     node_levels = nx.get_node_attributes(G, 'level')
+    not_proper = []
     for edge in G.edges:
         node_level_edge_out = node_levels[edge[0]]
         node_level_edge_in = node_levels[edge[1]]
         span = node_level_edge_in - node_level_edge_out
         if span > 1:
+            not_proper.append((edge[0],edge[1]))
+        if not_proper:
             raise Exception(str(edge) + 'has span' + str(span))
     return G
