@@ -13,38 +13,7 @@ def blockify_graph(G):
 
     return block_dict
 
-
-def initialize_block_position(G, block_list: []):
-    random.shuffle(block_list)
-
-    for block_id, block in nx.get_node_attributes(G, 'block').items():
-        nx.set_node_attributes(G, { block_id : get_position_of_block(block_list, block) }, 'pi')
-
-    return block_list
-
-def update_node_x_from_blocklist(G, block_list: []):
-    for node in G.nodes:
-        node_name = node
-        if "dummy" in node:
-            node_name = "_".join(node_name.split("_")[1:])
-        G.add_node(node, x=block_list.index(G.block_lookup[node_name]))
-
-def get_position_of_block(block_list: [], block: [str]):
-    for index in range(len(block_list)):
-        if len(block_list[index]) == len(block):
-            result = all(map(lambda x, y: x == y, block_list[index], block))
-            if result:
-                return index
-
-    raise Exception("Position For Block Not Found.")
-
-def get_block_to_node(node: str, block_list: [str]):
-    for block in block_list:
-        if node in block:
-            return block
-
-    raise Exception('Block To Node Not Found')
-
+## init blockification by adding dummy nodes
 def add_dummy_vertices(G):
     node_levels = nx.get_node_attributes(G, 'level')
     edges = copy.deepcopy(G.edges)
@@ -112,6 +81,20 @@ def add_dummy_vertices(G):
 
     return is_proper(G)
 
+def is_proper(G):
+    node_levels = nx.get_node_attributes(G, 'level')
+    not_proper = []
+    for edge in G.edges:
+        node_level_edge_out = node_levels[edge[0]]
+        node_level_edge_in = node_levels[edge[1]]
+        span = node_level_edge_in - node_level_edge_out
+        if span > 1:
+            not_proper.append((edge[0],edge[1]))
+        if not_proper:
+            raise Exception(str(edge) + 'has span' + str(span))
+    return G
+
+## generate dictionary of blocks
 def get_blocks(G):
     block_ids = []
     for node, block_id in G.nodes(data='block_id'):
@@ -132,6 +115,10 @@ def generate_block_dict(G):
     for node, block_id in G.nodes(data='block_id'):
         block_dict["block_id"] = get_nodes_by_block_id(G, block_id)
     return block_dict
+
+## access functions 
+def get_block_of_node(G, node):
+    return nx.get_node_attributes(G, 'block_id')[node]
 
 # upper(block_dict[block_id])
 def upper(block):
@@ -158,15 +145,60 @@ def get_neighbors_of_block(G, block, direction):
     else:
         raise Exception('No valid direction given.')
 
-def is_proper(G):
-    node_levels = nx.get_node_attributes(G, 'level')
-    not_proper = []
-    for edge in G.edges:
-        node_level_edge_out = node_levels[edge[0]]
-        node_level_edge_in = node_levels[edge[1]]
-        span = node_level_edge_in - node_level_edge_out
-        if span > 1:
-            not_proper.append((edge[0],edge[1]))
-        if not_proper:
-            raise Exception(str(edge) + 'has span' + str(span))
-    return G
+def get_indices_of_block(G, block, direction):
+    if direction == 'in':
+        i_minus_of_block = []
+        for neighbor in get_neighbors_of_block(G, block, 'in'):
+            neighbors_neighbors = get_neighbors_of_block(G, neighbor, 'out')
+            i_minus_of_block.append(neighbors_neighbors.index(block))
+            return i_minus_of_block
+
+    elif direction == 'out':
+        i_plus_of_block = []
+        for neighbor in get_neighbors_of_block(G, block, 'out'):
+            neighbors_neighbors = get_neighbors_of_block(G, block, 'in')
+            i_plus_of_block.append(neighbors_neighbors.index(block))
+            return i_plus_of_block
+
+
+# levels(G, block_dict[block_id])
+def levels(G, block):
+    level_set = {}
+    for node in block:
+        level_set.add(G.nodes[node]['level'])
+    return level_set
+
+
+## keikan functions for reference
+
+def initialize_block_position(G, block_list: []):
+    random.shuffle(block_list)
+
+    for block_id, block in nx.get_node_attributes(G, 'block').items():
+        nx.set_node_attributes(G, { block_id : get_position_of_block(block_list, block) }, 'pi')
+
+    return block_list
+
+def update_node_x_from_blocklist(G, block_list: []):
+    for node in G.nodes:
+        node_name = node
+        if "dummy" in node:
+            node_name = "_".join(node_name.split("_")[1:])
+        G.add_node(node, x=block_list.index(G.block_lookup[node_name]))
+
+def get_position_of_block(block_list: [], block: [str]):
+    for index in range(len(block_list)):
+        if len(block_list[index]) == len(block):
+            result = all(map(lambda x, y: x == y, block_list[index], block))
+            if result:
+                return index
+
+    raise Exception("Position For Block Not Found.")
+
+def get_block_to_node(node: str, block_list: [str]):
+    for block in block_list:
+        if node in block:
+            return block
+
+    raise Exception('Block To Node Not Found')
+##
