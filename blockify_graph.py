@@ -138,7 +138,7 @@ def get_neighbors_of_node(G, node, direction): # if a list of nodes is passed a 
         return neighbors
     elif direction == 'out':
         neighbors = []
-        for edge in G.in_edges(node):
+        for edge in G.out_edges(node):
             neighbors.append(edge[0])
         return neighbors
     else:
@@ -155,8 +155,11 @@ def get_neighbors_of_block(G, block, direction):
 def get_indices_of_block(G, block, direction):
     if direction == 'in':
         i_minus_of_block = []
+        logging.debug('lookup for block: ' + str(block))
         for neighbor in get_neighbors_of_block(G, block, 'in'):
+            logging.debug('neighbor: ' + str(neighbor))
             neighbors_neighbors = get_neighbors_of_block(G, neighbor, 'out')
+            logging.debug('neighbors_neighbors: ' + str(neighbors_neighbors))
             i_minus_of_block.append(neighbors_neighbors.index(block))
             return i_minus_of_block
 
