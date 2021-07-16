@@ -112,8 +112,10 @@ def get_nodes_by_block_id(G, block_id):
 def generate_block_dict(G):
     block_dict = {}
     block_list = get_blocks(G)
-    for node, block_id in G.nodes(data='block_id'):
-        block_dict["block_id"] = get_nodes_by_block_id(G, block_id)
+    logging.debug('block_list: ' + str(block_list))
+    for block in block_list:
+        #logging.debug('add node_list' + str(get_nodes_by_block_id(G, block)) + 'to block' + str(block))
+        block_dict[block] = get_nodes_by_block_id(G, block)
     return block_dict
 
 ## access functions 
