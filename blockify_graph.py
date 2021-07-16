@@ -11,6 +11,8 @@ def blockify_graph(G):
     add_dummy_vertices(G)
     block_dict = generate_block_dict(G)
 
+    return block_dict
+
 
 def initialize_block_position(G, block_list: []):
     random.shuffle(block_list)
@@ -42,18 +44,6 @@ def get_block_to_node(node: str, block_list: [str]):
             return block
 
     raise Exception('Block To Node Not Found')
-
-def upper(block: [str]):
-    if "dummy" in block[0]:
-        return "1_" + block[0]
-    else:
-        return block[0]
-
-def lower(block: [str]):
-    if "dummy" in block[0]:
-        return str(len(block) + 1) + "_" + block[0][2:]
-    else:
-        return block[0]
 
 def add_dummy_vertices(G):
     node_levels = nx.get_node_attributes(G, 'level')
@@ -151,13 +141,22 @@ def upper(block):
 def lower(block):
     return block[len(block)-1]
 
-def get_neighbors_of_block(G, block, direction):
-    N = []
+def get_neighbors_of_node(G, node, direction): # if a list of nodes is passed a list of edges of these nodes is returned
+    #N = []
     if direction == 'in':
-        G.in_edges(block)
+        return G.in_edges(node)
     elif direction == 'out':
-        G.out_edges(block)
-    return N
+        return G.out_edges(node)
+    else:
+        raise Exception('No valid direction given.')
+
+def get_neighbors_of_block(G, block, direction):
+    if direction == 'in':
+        return G.in_edges(upper(block))
+    elif direction == 'out':
+        return G.out_edges(lower(block))
+    else:
+        raise Exception('No valid direction given.')
 
 def is_proper(G):
     node_levels = nx.get_node_attributes(G, 'level')
