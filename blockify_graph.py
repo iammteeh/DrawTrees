@@ -158,17 +158,17 @@ def get_indices_of_block(G, block, direction):
         logging.debug('lookup for block: ' + str(block))
         for neighbor in get_neighbors_of_block(G, block, 'in'):
             logging.debug('neighbor: ' + str(neighbor))
-            neighbors_neighbors = get_neighbors_of_block(G, neighbor, 'out')
+            neighbors_neighbors = get_neighbors_of_block(G, get_block_of_node(G, neighbor), 'out')
             logging.debug('neighbors_neighbors: ' + str(neighbors_neighbors))
             i_minus_of_block.append(neighbors_neighbors.index(block))
-            return i_minus_of_block
+        return i_minus_of_block
 
     elif direction == 'out':
         i_plus_of_block = []
         for neighbor in get_neighbors_of_block(G, block, 'out'):
-            neighbors_neighbors = get_neighbors_of_block(G, block, 'in')
+            neighbors_neighbors = get_neighbors_of_block(G, get_block_of_node(G, neighbor), 'in')
             i_plus_of_block.append(neighbors_neighbors.index(block))
-            return i_plus_of_block
+        return i_plus_of_block
 
 
 # levels(G, block_dict[block_id])
