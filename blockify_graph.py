@@ -139,7 +139,7 @@ def get_neighbors_of_node(G, node, direction): # if a list of nodes is passed a 
     elif direction == 'out':
         neighbors = []
         for edge in G.out_edges(node):
-            neighbors.append(edge[0])
+            neighbors.append(edge[1])
         return neighbors
     else:
         raise Exception('No valid direction given.')
