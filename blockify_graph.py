@@ -131,19 +131,24 @@ def lower(block):
     return block[len(block)-1]
 
 def get_neighbors_of_node(G, node, direction): # if a list of nodes is passed a list of edges of these nodes is returned
-    #N = []
     if direction == 'in':
-        return G.in_edges(node)
+        neighbors = []
+        for edge in G.in_edges(node):
+            neighbors.append(edge[0])
+        return neighbors
     elif direction == 'out':
-        return G.out_edges(node)
+        neighbors = []
+        for edge in G.in_edges(node):
+            neighbors.append(edge[0])
+        return neighbors
     else:
         raise Exception('No valid direction given.')
 
 def get_neighbors_of_block(G, block, direction):
     if direction == 'in':
-        return G.in_edges(upper(block))
+        return get_neighbors_of_node(G, upper(block_dict[block]), 'in')
     elif direction == 'out':
-        return G.out_edges(lower(block))
+        return get_neighbors_of_node(G, lower(block_dict[block]), 'out')
     else:
         raise Exception('No valid direction given.')
 
