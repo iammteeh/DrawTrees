@@ -11,11 +11,10 @@ def global_sifting(G):
     for p in range(sifting_rounds):
         for block in block_list:
             sifting_step()
-
-    for node in G.nodes:
-        assign_pi_value(G, block_list, block_dict)
-
     return G
+
+def sifting_step():
+    return
 
 def sort_adjacencies(G, block_list, block_dict):
     
@@ -101,53 +100,6 @@ def sort_adjacencies(G, block_list, block_dict):
 
     return N_minus, I_minus, N_plus, I_plus
 
-def update_adjacencies(G, block_list, a, b, direction, N_minus, I_minus, N_plus, I_plus):
-    i = 0
-    j = 0
-    z = int()
-    if direction == 'in':
-        neighbors_direction_a = N_minus[a]
-        indices_direction_a = I_minus[a]
-        neighbors_direction_b = N_minus[b]
-        indices_direction_b = I_minus[b]
-        neighbors_opposite_z = N_plus[z]
-    elif direction == 'out':
-        neighbors_direction_a = N_plus[a]
-        neighbors_direction_b = N_plus[b]
-        neighbors_direction_b = N_plus[b]
-        indices_direction_b = I_plus[b]
-        neighbors_opposite_z = N_minus[z]
-
-    while i < len(neighbors_direction_a) and j < len(neighbors_direction_b):
-        if get_pi_of_block(get_block_of_node(G, neighbors_direction_a[i]), block_list) < get_pi_of_block(get_block_of_node(G, neighbors_direction_b[j]), block_list):
-            i += 1
-        elif get_pi_of_block(get_block_of_node(G, neighbors_direction_a[i]), block_list) > get_pi_of_block(get_block_of_node(G, neighbors_direction_b[j]), block_list):
-            j += 1
-        else:
-            z = neighbors_direction_a[i]
-            neighbors_opposite_z
-
-
-
-
-def assign_p_dict(G, block, block_dict, direction):
-    p = {}
-    if direction == 'upper':
-        i = 0
-        for edge in G.in_edges(upper(block_dict[block])):
-            p[(edge[0], edge[1])] = i
-            i += 1
-        return p
-    elif direction == 'lower':
-        i = 0
-        for edge in G.in_edges(lower(block_dict[block])):
-            p[(edge[0], edge[1])] = i
-            i += 1
-        return p
-    else:
-        raise Exception('No valid direction given.')
-
-
 def create_ordered_block_list(G):
     block_dict = blockify_graph(G)
     block_list = []
@@ -159,10 +111,6 @@ def create_ordered_block_list(G):
 
 def get_pi_of_block(block, block_list):
     return block_list.index(block)
-
-def assign_pi_to_block(block_list):
-    for block in block_list:
-
 
 def assign_pi_to_node(G, block_list, block_dict):
     for block in block_list:
