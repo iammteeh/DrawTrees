@@ -35,7 +35,7 @@ def add_dummy_vertices(G):
                 logging.debug('case dc==1 s==2')
                 dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
-                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, ) # TODO NAMING
+                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, y=node_level_edge_out+dummy_counter)
                 G.add_edge(edge[0],dummy_node_name)
                 G.add_edge(dummy_node_name,edge[1])
                 logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
@@ -44,7 +44,7 @@ def add_dummy_vertices(G):
                 logging.debug('case dc==1 s>2')
                 dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
-                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, ) # TODO
+                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, y=node_level_edge_out+dummy_counter)
                 G.add_edge(edge[0],dummy_node_name)
                 logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
             
@@ -53,7 +53,7 @@ def add_dummy_vertices(G):
                 dummy_node_predecessor_name = block_list[dummy_counter-2] 
                 dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
-                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, ) # TODO
+                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, y=node_level_edge_out+dummy_counter)
                 G.add_edge(dummy_node_predecessor_name,dummy_node_name)
                 logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
 
@@ -62,7 +62,7 @@ def add_dummy_vertices(G):
                 dummy_node_predecessor_name = block_list[dummy_counter-2] 
                 dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
-                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, ) # TODO
+                G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, y=node_level_edge_out+dummy_counter)
                 G.add_edge(dummy_node_predecessor_name,dummy_node_name)
                 G.add_edge(dummy_node_name,edge[1])
                 logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
