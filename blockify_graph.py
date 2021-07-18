@@ -99,7 +99,7 @@ def get_blocks(G):
     block_ids = []
     for node, block_id in G.nodes(data='block_id'):
         block_ids.append(block_id)
-    block_list = list(set(block_ids))
+    block_list = list(set(block_ids)) # make distinct list of blocks
     return block_list
 
 def get_nodes_by_block_id(G, block_id):
@@ -177,38 +177,3 @@ def levels(G, block):
     for node in block:
         level_set.add(G.nodes[node]['level'])
     return level_set
-
-
-## keikan functions for reference
-
-def initialize_block_position(G, block_list: []):
-    random.shuffle(block_list)
-
-    for block_id, block in nx.get_node_attributes(G, 'block').items():
-        nx.set_node_attributes(G, { block_id : get_position_of_block(block_list, block) }, 'pi')
-
-    return block_list
-
-def update_node_x_from_blocklist(G, block_list: []):
-    for node in G.nodes:
-        node_name = node
-        if "dummy" in node:
-            node_name = "_".join(node_name.split("_")[1:])
-        G.add_node(node, x=block_list.index(G.block_lookup[node_name]))
-
-def get_position_of_block(block_list: [], block: [str]):
-    for index in range(len(block_list)):
-        if len(block_list[index]) == len(block):
-            result = all(map(lambda x, y: x == y, block_list[index], block))
-            if result:
-                return index
-
-    raise Exception("Position For Block Not Found.")
-
-def get_block_to_node(node: str, block_list: [str]):
-    for block in block_list:
-        if node in block:
-            return block
-
-    raise Exception('Block To Node Not Found')
-##
