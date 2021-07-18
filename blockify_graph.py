@@ -144,7 +144,7 @@ def get_neighbors_of_node(G, node, direction): # if a list of nodes is passed a 
     else:
         raise Exception('No valid direction given.')
 
-def get_neighbors_of_block(G, block, direction):
+def get_neighbors_of_block(G, block_dict, block, direction):
     if direction == 'in':
         return get_neighbors_of_node(G, upper(block_dict[block]), 'in')
     elif direction == 'out':
