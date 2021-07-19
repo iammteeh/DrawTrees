@@ -2,6 +2,15 @@ import networkx as nx
 import copy
 import logging
 
+def remove_cycles(DiGraph, method):    
+    remove_selfloops(DiGraph)
+    if method == 'greedy_cycle_removal':
+        node_order = greedy_cycle_removal(DiGraph)
+        revert_edges(DiGraph, node_order)
+    else:
+        raise Exception('No method with this name available!')
+    return DiGraph
+
 def remove_selfloops(DiGraph):
     if nx.selfloop_edges(DiGraph):
         for edge_from, edge_to in list(nx.selfloop_edges(DiGraph)):
@@ -9,6 +18,35 @@ def remove_selfloops(DiGraph):
     else:
         return
 
+def greedy_cycle_removal(DiGraph):
+    copy_graph = copy.deepcopy(DiGraph)
+    s_1 = []
+    s_2 = []
+    while len(copy_graph.nodes) != 0:
+        sink_counter, sinks = get_sinks(copy_graph)
+        while sink_counter != 0:
+            sink = sinks.pop(0)
+            sink_counter -= 1
+            s_2.insert(0, sink)
+            copy_graph.remove_node(sink)
+            sink_counter, sinks = get_sinks(copy_graph)
+
+        root_counter, roots = get_sources(copy_graph)
+        while root_counter != 0:
+            root = roots.pop(0)
+            root_counter -= 1
+            s_1.append(root)
+            copy_graph.remove_node(root)
+            root_counter, roots = get_sources(copy_graph)
+
+        if len(copy_graph.nodes) != 0:
+            max_node = get_node_with_max_degree_ratio(copy_graph)
+            s_1.append(max_node)
+            copy_graph.remove_node(max_node)
+
+    return s_1 + s_2
+
+## helper functions 
 def remove_successor_edges(node, DiGraph):
     for successor in list(DiGraph.successors(node)): # use list() to avoid error of changing dict size during iteration
         logging.debug('remove edge ' + str(node) + ' ' + str(successor))
@@ -46,34 +84,7 @@ def get_sources(DiGraph):
             sources.append(node)
     return len(sources), sources
 
-def greedy_cycle_removal(DiGraph):
-    copy_graph = copy.deepcopy(DiGraph)
-    s_1 = []
-    s_2 = []
-    while len(copy_graph.nodes) != 0:
-        sink_counter, sinks = get_sinks(copy_graph)
-        while sink_counter != 0:
-            sink = sinks.pop(0)
-            sink_counter -= 1
-            s_2.insert(0, sink)
-            copy_graph.remove_node(sink)
-            sink_counter, sinks = get_sinks(copy_graph)
-
-        root_counter, roots = get_sources(copy_graph)
-        while root_counter != 0:
-            root = roots.pop(0)
-            root_counter -= 1
-            s_1.append(root)
-            copy_graph.remove_node(root)
-            root_counter, roots = get_sources(copy_graph)
-
-        if len(copy_graph.nodes) != 0:
-            max_node = get_node_with_max_degree_ratio(copy_graph)
-            s_1.append(max_node)
-            copy_graph.remove_node(max_node)
-
-    return s_1 + s_2
-
+## revert edges after greedy cycle removal
 def revert_edges(DiGraph, node_order: [list]):
     reverting_edges = []
     reverted_edges = []
