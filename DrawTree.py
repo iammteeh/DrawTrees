@@ -209,6 +209,19 @@ def DrawTreeWithNames(tree):
     pos=nx.get_node_attributes(Tree,'pos')
     nx.draw(Tree,pos, with_labels=True)
 
+def assign_tree_layout(tree):
+    buchheim(tree)
+    logging.info('start drawing')
+    Tree = nx.DiGraph()
+    for node in tree.traverse():
+        v = node.name if node.name else node.idx
+        Tree.add_node(v,pos=(node.x,-node.y))
+        for child in node.children:
+            w = child.name if child.name else child.idx
+            Tree.add_edge(v, w)    
+    pos=nx.get_node_attributes(Tree,'pos')
+    nx.draw(Tree,pos, with_labels=True)
+    return pos
 
 # sys
 logging.getLogger().setLevel(logging.WARNING)
