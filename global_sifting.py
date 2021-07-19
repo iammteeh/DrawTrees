@@ -1,20 +1,33 @@
 import networkx as nx
 import random
 import logging
+import copy
 from blockify_graph import blockify_graph, get_block_of_node, upper, lower, get_neighbors_of_node, get_neighbors_of_block, levels
 from typing import Dict, List
 
-def global_sifting(G):
-    sifting_rounds = 10
+def global_sifting(G, sifting_rounds = 10):
     block_list, block_dict = create_ordered_block_list(G)
     assign_pi_to_node(G, block_list, block_dict)
     for p in range(sifting_rounds):
         for block in block_list:
-            sifting_step()
+            sifting_step(G, block_list, block_dict, block)
+    for node in G.nodes:
+        nx.set_node_attributes(G, { node : get_pi_of_block(get_block_of_node(G, node), block_list) }, 'pi')
     return G
 
-def sifting_step():
-    return
+def sifting_step(G, block_list, block_dict, block):
+    block_list.remove(block)
+    block_list.insert(0, block)
+    N_minus, I_minus, N_plus, I_plus = sort_adjacencies(G, block_list, block_dict)
+    chi = 0
+    chi_star = 0
+    p_star = 0
+    for p in range(1, len(block_list)-1):
+        chi = chi + sifting_swap(G, block_dict, block_list, block, block_list[p], N_minus, I_minus, N_plus, I_plus)
+        if chi < chi_star:
+            chi_star = chi
+            p_star = p
+    return 
 
 def sort_adjacencies(G, block_list, block_dict):
     
@@ -99,6 +112,119 @@ def sort_adjacencies(G, block_list, block_dict):
                 I_plus[w].insert(p[s], j)
 
     return N_minus, I_minus, N_plus, I_plus
+
+def sifting_swap(G, block_dict, block_list, A, B, N_minus, I_minus, N_plus, I_plus):
+    L = set()
+    Delta = 0
+    y_attributes = nx.get_node_attributes(G, 'y')
+    
+    if y_attributes[upper(block_dict[A])] in levels(G, block_dict[B]):
+        L.add((y_attributes[upper(block_dict[A])],'in'))
+        a = upper(block_dict[A])
+    if y_attributes[lower(block_dict[A])] in levels(G, block_dict[B]):
+        L.add((y_attributes[lower(block_dict[A])],'out'))
+        a = lower(block_dict[A])
+    if y_attributes[upper(block_dict[B])] in levels(G, block_dict[A]):
+        L.add((y_attributes[upper(block_dict[B])],'in'))
+        b = upper(block_dict[B])
+    if y_attributes[lower(block_dict[B])] in levels(G, block_dict[A]):
+        L.add((y_attributes[lower(block_dict[B])],'out'))
+        b = lower(block_dict[B])
+    for l, d in L:
+        a = None
+        for node in block_dict[A]:
+            if y_attributes[node] == l:
+                a = node
+        b = None
+        for node in block_dict[B]:
+            if y_attributes[node] == l:
+                b = node
+        if a is None or b is None:
+            raise Exception('no nodes with equal level found!')
+        Delta = Delta + uswap(G, block_list, a, b, d, N_minus, N_plus)
+        update_adjacencies(G, block_list, a, b, d, N_minus, I_minus, N_plus, I_plus)
+
+    swap_A = A
+    swap_B = B
+    index_A = block_list.index(A)
+    index_B = block_list.index(B)
+    block_list.remove(B)
+    block_list.insert(index_A, swap_B)
+    block_list.remove(A)
+    block_list.insert(index_B, swap_A)
+
+    # pi(A) += 1
+    # pi(B) -= 1
+
+    return Delta
+
+def uswap(G, block_list, a, b, direction, N_minus, N_plus):
+    c, i, j = 0
+    if direction == 'in':
+        neighbors_direction_a = N_minus[a]
+        neighbors_direction_b = N_minus[b]
+    elif direction == 'out':
+        neighbors_direction_a = N_plus[a]
+        neighbors_direction_b = N_plus[b]
+
+    r = len(neighbors_direction_a)
+    s = len(neighbors_direction_b)
+
+    while i < r and j < s:
+        if get_pi_of_block(get_block_of_node(G, neighbors_direction_a[i]), block_list) < get_pi_of_block(get_block_of_node(G, neighbors_direction_b[j]), block_list):
+            c = c + (s-j)
+            i += 1
+        elif get_pi_of_block(get_block_of_node(G, neighbors_direction_a[i]), block_list) > get_pi_of_block(get_block_of_node(G, neighbors_direction_b[j]), block_list):
+            c = c - (r-i)
+            j += 1
+        else:
+            c = c + (s-j) - (r-i)
+            i += 1
+            j += 1
+    return c
+
+def update_adjacencies(G, block_list, a, b, direction, N_minus, I_minus, N_plus, I_plus):
+    i, j = 0
+    z = int()
+    if direction == 'in':
+        neighbors_direction_a = N_minus[a]
+        indices_direction_a = I_minus[a]
+        neighbors_direction_b = N_minus[b]
+        indices_direction_b = I_minus[b]
+        neighbors_opposite_z = N_plus[z]
+        indices_opposite_z = I_plus[z]
+    elif direction == 'out':
+        neighbors_direction_a = N_plus[a]
+        indices_direction_a = I_plus[a]
+        neighbors_direction_b = N_plus[b]
+        indices_direction_b = I_plus[b]
+        neighbors_opposite_z = N_minus[z]
+        indices_opposite_z = I_minus[z]
+
+    r = len(neighbors_direction_a)
+    s = len(neighbors_direction_b)
+
+    while i < r and j < s:
+        if get_pi_of_block(get_block_of_node(G, neighbors_direction_a[i]), block_list) < get_pi_of_block(get_block_of_node(G, neighbors_direction_b[j]), block_list):
+            i += 1
+        elif get_pi_of_block(get_block_of_node(G, neighbors_direction_a[i]), block_list) > get_pi_of_block(get_block_of_node(G, neighbors_direction_b[j]), block_list):
+            j += 1
+        else:
+            z = neighbors_direction_a[i]
+            ## swap entries at positions Id(a)[i]and Id(b)[j]in N−d(z)and in I−d(z)
+            swap_neighbors = neighbors_opposite_z[neighbors_direction_a[i]]
+            swap_indices = indices_opposite_z[indices_direction_a[i]]
+            #
+            neighbors_opposite_z[neighbors_direction_a[i]] = neighbors_opposite_z[neighbors_direction_b[j]]
+            indices_opposite_z[indices_direction_a[i]] = indices_opposite_z[indices_direction_b[j]]
+            #
+            neighbors_opposite_z[neighbors_direction_b[j]] = swap_neighbors
+            indices_opposite_z[indices_direction_b[j]] = swap_indices
+            ##
+            indices_direction_a[i] = indices_direction_a[i+1]
+            indices_direction_b[j] = indices_direction_b[j-1]
+            i += 1
+            j += 1
 
 def create_ordered_block_list(G):
     block_dict = blockify_graph(G)
