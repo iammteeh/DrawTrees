@@ -12,8 +12,8 @@ graph_type = 'DiGraph'
 input_format = 'graphml'
 #string = '((C)A,(D)B)F;' # for newick trees
 #file = 'phyliptree.nh' # newick tree data
-#file = './graphml/JFtp.graphml' # GraphML MultiGraph data
-#multigraph_key = 'method-call' # Edge Key
+file = './graphml/JFtp.graphml' # GraphML MultiGraph data
+multigraph_key = 'method-call' # Edge Key
 
 ## some nx graphs
 # G = nx.gn_graph(5) # a tree
@@ -44,6 +44,8 @@ def parse_input(input_format, file, *multigraph_key):
 def assign_layout(G, graph_type):
     if graph_type == 'tree':
         pos = assign_tree_layout(G)
+    elif graph_type == 'DiGraph':
+        pos = Sugiyama(G)
 
 
 if __name__ == '__main__':
