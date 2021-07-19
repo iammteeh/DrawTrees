@@ -173,7 +173,7 @@ def get_indices_of_block(G, block, direction):
 
 # levels(G, block_dict[block_id])
 def levels(G, block):
-    level_set = {}
+    level_set = set()
     for node in block:
         level_set.add(G.nodes[node]['level'])
     return level_set
