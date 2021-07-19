@@ -31,74 +31,7 @@ def get_node_with_max_degree_ratio(DiGraph):
     NDR = list(zip(DiGraph.nodes,nodes_degree_ratio)) # create tuples of nodes and their degree ratio
     a_node_with_max_ratio = max(list(NDR),key=lambda item:item[1])[0]
     return a_node_with_max_ratio
-    
-def analyze_nodes_left(DiGraph):
-    nodes_degree_ratio = []
-    for node in DiGraph.nodes:
-        logging.debug('node: ' + str(node) + ' out degree: ' + str(DiGraph.out_degree(node)) + ' in degree: ' + str(DiGraph.in_degree(node)) + ' ratio: ' + str(DiGraph.out_degree(node) - DiGraph.in_degree(node)))
-        
-
-#def greedy_cycle_removal(DiGraph):
-#    DiGraph = copy.deepcopy(DiGraph)
-#    logging.debug('initial nodes:' + str(DiGraph.nodes))
-#    # gen source list
-#    sources = []
-#    for node, indegree in DiGraph.in_degree:
-#        if indegree == 0:
-#            sources.append(node)
-#    logging.debug('sources:' + str(sources))
-#    # gen sink list
-#    sinks = []
-#    for node, outdegree in DiGraph.out_degree:
-#        if outdegree == 0:
-#            sinks.append(node)
-#    logging.debug('sinks:' + str(sinks))
-#    S_l = []
-#    S_r = []
-#    while DiGraph.__len__() > 0:
-#        for source in sources:
-#            S_l.append(source)
-#            remove_successor_edges(source, DiGraph)
-#            logging.debug('remove source node ' + str(source))
-#            DiGraph.remove_node(source)
-#        # clear sources
-#        for source in S_l:
-#            try:
-#                sources.remove(source)
-#            except:
-#                pass
-#        for sink in sinks:
-#            S_r.append(sink)
-#            remove_predecessor_edges(sink, DiGraph)
-#            logging.debug('remove sink node ' + str(sink))
-#            DiGraph.remove_node(sink)
-#        # clear sinks
-#        for sink in S_r:
-#            try:
-#                sinks.remove(sink)
-#            except:
-#                pass
-#        for source in S_l:
-#            try:
-#                sources.remove(source)
-#            except:
-#                pass
-#        if DiGraph.__len__() > 0:
-#            logging.debug('nodes left:')
-#            analyze_nodes_left(DiGraph)
-#            v = get_node_with_max_degree_ratio(DiGraph)
-#            logging.debug(v)
-#            try:
-#                remove_predecessor_edges(v, DiGraph)
-#                remove_successor_edges(v, DiGraph)
-#            except:
-#                logging.debug('no edges to remove')
-#            try:
-#                DiGraph.remove_node(v)
-#            except:
-#                logging.debug('node already removed')
-#    return S_l + S_r
-
+     
 def get_sinks(DiGraph):
     sinks = []
     for node, outdegree in DiGraph.out_degree:
