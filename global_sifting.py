@@ -86,6 +86,8 @@ class GlobalSifting:
 
     def sort_adjacencies(self, block_list):
         logging.info('sort adjacencies')
+        logging.debug('block_list: ' + str(block_list))
+        logging.debug('block_dict: ' + str(self.block_dict))
         # for reference
         #N_minus: Dict[any,List] = dict()
         #I_minus: Dict[any,List] = dict()
@@ -115,10 +117,13 @@ class GlobalSifting:
             for edge in self.G.in_edges(upper(self.block_dict[block])): # for s € {(u,v) € E | v = upper(A)}
                 # init variables
                 u, v = edge
+                logging.debug('u=' + str(u) + ', v=' + str(v))
                 s = edge
                 j = len(self.N_plus[u]) # marked for further improvement
                 # execute insertion logic
+                logging.debug('append N_plus[u]=' + str(self.N_plus[u]) + ' with v=' + str(v))
                 self.N_plus[u].append(v)
+                logging.debug('N_plus[u] is now: ' + str(self.N_plus[u]))
                 pi_block = self.get_pi_of_block(block)
                 pi_block_u = self.get_pi_of_block(self.get_block_of_node(u))
                 if pi_block < pi_block_u:
@@ -216,11 +221,17 @@ class GlobalSifting:
         i = 0
         j = 0
         if direction == 'in':
-            neighbors_direction_a = self.N_minus[a] # marked for further improvement
-            neighbors_direction_b = self.N_minus[b] # marked for further improvement
+            neighbors_direction_a = self.N_minus[upper(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
+            logging.debug('neighbors_direction_a = ' + str(neighbors_direction_a))
+            neighbors_direction_b = self.N_minus[upper(self.block_dict[ self.get_block_of_node(b)])] # marked for further improvement
+            logging.debug('neighbors_direction_b = ' + str(neighbors_direction_b))
         elif direction == 'out':
-            neighbors_direction_a = self.N_plus[a] # marked for further improvement
-            neighbors_direction_b = self.N_plus[b] # marked for further improvement
+            neighbors_direction_a = self.N_plus[lower(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
+            logging.debug('neighbors_direction_a = ' + str(neighbors_direction_a))
+            neighbors_direction_b = self.N_plus[lower(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
+            logging.debug('neighbors_direction_b = ' + str(neighbors_direction_b))
+        else:
+            raise Exception('No valid direction given.')
 
         r = len(neighbors_direction_a)
         s = len(neighbors_direction_b)
@@ -244,19 +255,17 @@ class GlobalSifting:
         j = 0
         z = int()
         if direction == 'in':
-            neighbors_direction_a = self.N_minus[a] # marked for further improvement
-            indices_direction_a = self.I_minus[a] # marked for further improvement
-            neighbors_direction_b = self.N_minus[b] # marked for further improvement
-            indices_direction_b = self.I_minus[b] # marked for further improvement
-            neighbors_opposite_z = self.N_plus[z] # marked for further improvement
-            indices_opposite_z = self.I_plus[z] # marked for further improvement
+            neighbors_direction_a = self.N_minus[upper(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
+            indices_direction_a = self.I_minus[upper(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
+            neighbors_direction_b = self.N_minus[upper(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
+            indices_direction_b = self.I_minus[upper(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
         elif direction == 'out':
-            neighbors_direction_a = self.N_plus[a] # marked for further improvement
-            indices_direction_a = self.I_plus[a] # marked for further improvement
-            neighbors_direction_b = self.N_plus[b] # marked for further improvement
-            indices_direction_b = self.I_plus[b] # marked for further improvement
-            neighbors_opposite_z = self.N_minus[z] # marked for further improvement
-            indices_opposite_z = self.I_minus[z] # marked for further improvement
+            neighbors_direction_a = self.N_plus[lower(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
+            indices_direction_a = self.I_plus[lower(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
+            neighbors_direction_b = self.N_plus[lower(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
+            indices_direction_b = self.I_plus[lower(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
+        else:
+            raise Exception('No valid direction given.')
 
         r = len(neighbors_direction_a)
         s = len(neighbors_direction_b)
@@ -267,7 +276,17 @@ class GlobalSifting:
             elif self.get_pi_of_block(self.get_block_of_node(neighbors_direction_a[i])) > self.get_pi_of_block(self.get_block_of_node(neighbors_direction_b[j])):
                 j += 1
             else: # marked for further improvement # CHECK TWICE
+                
                 z = neighbors_direction_a[i] 
+                if direction == 'in':
+                    neighbors_opposite_z = self.N_plus[lower(self.block_dict[self.get_block_of_node(z)])] # marked for further improvement
+                    indices_opposite_z = self.I_plus[lower(self.block_dict[self.get_block_of_node(z)])] # marked for further improvement
+                elif direction == 'out':
+                    neighbors_opposite_z = self.N_minus[upper(self.block_dict[self.get_block_of_node(z)])] # marked for further improvement
+                    indices_opposite_z = self.I_minus[upper(self.block_dict[self.get_block_of_node(z)])] # marked for further improvement
+                else:
+                    raise Exception('No valid direction given.')
+
                 ## swap entries at positions Id(a)[i]and Id(b)[j]in N−d(z)and in I−d(z)
                 swap_neighbors = neighbors_opposite_z[neighbors_direction_a[i]]
                 swap_indices = indices_opposite_z[indices_direction_a[i]]
