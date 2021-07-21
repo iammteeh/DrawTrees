@@ -1,3 +1,4 @@
+import os, sys
 import logging
 import GraphML
 from DrawTree import assign_tree_layout
@@ -48,7 +49,8 @@ def assign_layout(G, graph_type):
         pos = Sugiyama(G)
 
 
-if __name__ == '__main__':
+
+def main():
     G = parse_input(input_format, file)
     pos = assign_layout(G, graph_type)
     
@@ -61,3 +63,6 @@ if __name__ == '__main__':
     #if show_graph:
     plt.show()
     plt.clf()
+
+if __name__ == '__main__':
+    main()
