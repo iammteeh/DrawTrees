@@ -130,15 +130,7 @@ class GlobalSifting:
                     logging.debug('pi_block < pi_block_u: ' + str(pi_block) + ' < ' + str(pi_block_u))
                     p[s] = j
                 else:
-                    try:
-                        self.I_plus[u].pop(j) # marked for further improvement
-                    except:
-                        pass
                     self.I_plus[u].insert(j, p[s]) # marked for further improvement
-                    try:
-                        self.I_minus[v].pop(p[s]) # marked for further improvement
-                    except:
-                        pass
                     self.I_minus[v].insert(p[s], j) # marked for further improvement
 
             for edge in self.G.out_edges(lower(self.block_dict[block])): # for s € {(w,x) € E | w = lower(A)}
@@ -153,15 +145,7 @@ class GlobalSifting:
                 if pi_block < pi_block_x:
                     p[s] = j
                 else:
-                    try:
-                        self.I_minus[x].pop(j) # marked for further improvement
-                    except:
-                        pass
                     self.I_minus[x].insert(j, p[s]) # marked for further improvement
-                    try:
-                        self.I_plus[w].pop(p[[s]]) # marked for further improvement
-                    except:
-                        pass
                     self.I_plus[w].insert(p[s], j) # marked for further improvement
         logging.debug('N_minus: ' + str(N_minus) + ' I_minus: ' + str(I_minus) + ' N_plus: ' + str(N_plus) + ' I_plus: ' + str(I_plus))
         
@@ -255,11 +239,19 @@ class GlobalSifting:
         j = 0
         z = int()
         if direction == 'in':
+            A = upper(self.block_dict[self.get_block_of_node(a)])
+            B = upper(self.block_dict[self.get_block_of_node(b)])
+            logging.debug('A: ' + str(A))
+            logging.debug('B: ' + str(B))
             neighbors_direction_a = self.N_minus[upper(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
             indices_direction_a = self.I_minus[upper(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
             neighbors_direction_b = self.N_minus[upper(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
             indices_direction_b = self.I_minus[upper(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
         elif direction == 'out':
+            A = lower(self.block_dict[self.get_block_of_node(a)])
+            B = lower(self.block_dict[self.get_block_of_node(b)])
+            logging.debug('A: ' + str(A))
+            logging.debug('B: ' + str(B))
             neighbors_direction_a = self.N_plus[lower(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
             indices_direction_a = self.I_plus[lower(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
             neighbors_direction_b = self.N_plus[lower(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
@@ -286,19 +278,64 @@ class GlobalSifting:
                     indices_opposite_z = self.I_minus[upper(self.block_dict[self.get_block_of_node(z)])] # marked for further improvement
                 else:
                     raise Exception('No valid direction given.')
-
-                ## swap entries at positions Id(a)[i]and Id(b)[j]in N−d(z)and in I−d(z)
-                swap_neighbors = neighbors_opposite_z[neighbors_direction_a[i]]
+                                    
+                # swap entries at positions Id(a)[i]and Id(b)[j]in N−d(z)and in I−d(z)
+                swap_neighbors = neighbors_opposite_z[indices_direction_a[i]]
                 swap_indices = indices_opposite_z[indices_direction_a[i]]
-                #
-                neighbors_opposite_z[neighbors_direction_a[i]] = neighbors_opposite_z[neighbors_direction_b[j]]
+                
+                neighbors_opposite_z[indices_direction_a[i]] = neighbors_opposite_z[indices_direction_b[j]]
                 indices_opposite_z[indices_direction_a[i]] = indices_opposite_z[indices_direction_b[j]]
-                #
-                neighbors_opposite_z[neighbors_direction_b[j]] = swap_neighbors
+                
+                neighbors_opposite_z[indices_direction_b[j]] = swap_neighbors
                 indices_opposite_z[indices_direction_b[j]] = swap_indices
-                ##
+                
                 indices_direction_a[i] += 1
                 indices_direction_b[j] -= 1 
                 i += 1
                 j += 1
 
+                #index_a = neighbors_direction_a[i]
+                #index_b = neighbors_direction_b[j]
+
+                #swap = neighbors_opposite_z[index_a]
+                #neighbors_opposite_z[index_a] = neighbors_opposite_z[index_b]
+                #neighbors_opposite_z[index_b] = neighbors_opposite_z[swap]
+
+                #swap = indices_opposite_z[index_a]
+                #indices_opposite_z[index_a] = indices_opposite_z[index_b]
+                #indices_opposite_z[index_b] = swap
+
+                #neighbors_direction_a[i] = index_b
+                #neighbors_direction_b[j] = index_a
+
+                #i += 1
+                #j += 1
+
+                #logging.debug(str(neighbors_opposite_z) +'length N[z]:' + str(len(neighbors_opposite_z)))
+                #pos_a_z = neighbors_opposite_z.index(A)
+                #logging.debug('pos_a_z: ' + str(pos_a_z))
+                #pos_b_z = neighbors_opposite_z.index(B)
+                #logging.debug('pos_b_z: ' + str(pos_b_z))
+                #logging.debug('length indices_opposite_z: ' + str(len(indices_opposite_z)))
+
+                #if pos_a_z < pos_b_z:
+                    #neighbors_opposite_z.pop(pos_a_z)
+                    #neighbors_opposite_z.pop(pos_b_z - 1)
+                    #elem_a = indices_opposite_z.pop(pos_a_z)
+                    #elem_b = indices_opposite_z.pop(pos_b_z - 1)
+                #else:
+                    #neighbors_opposite_z.pop(pos_b_z)
+                    #neighbors_opposite_z.pop(pos_a_z - 1)
+                    #elem_a = indices_opposite_z.pop(pos_b_z)
+                    #elem_b = indices_opposite_z.pop(pos_a_z - 1)
+
+                #neighbors_opposite_z.insert(pos_a_z, B)
+                #neighbors_opposite_z.insert(pos_b_z, A)
+
+                #indices_opposite_z.insert(pos_a_z, elem_b)
+                #indices_opposite_z.insert(pos_b_z, elem_a)
+
+                #indices_direction_a[i] += 1
+                #indices_direction_b[j] -= 1 
+                #i += 1
+                #j += 1
