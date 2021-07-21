@@ -58,7 +58,7 @@ class GlobalSifting:
                 self.block_list = self.sifting_step(self.block_list, block)
         for node in self.G.nodes:
             logging.info('update pi of node: ' + str(node))
-            self.set_pi_of_node(self.node, self.get_pi_of_block(self.get_block_of_node(self, node)))
+            self.set_pi_of_node(self.node, self.get_pi_of_block(self.get_block_of_node(self.node)))
         
         for node in self.G.nodes(data='pi'):
             nx.set_node_attributes(self.G, { node: node[1] }, 'x')
