@@ -111,18 +111,18 @@ class GlobalSifting:
                 self.N_minus[up] = list()
             for low in lower_nodes:
                 self.N_plus[low] = list()
-            #for edge in self.G.in_edges(upper(self.block_dict[block])): # for s € {(u,v) € E | v = upper(A)} 
-            #    u, v = edge
-            #    s = edge
-            #    self.N_plus[u] = list() # marked for further improvement
-            #    self.I_plus[u] = list() # marked for further improvement
-            #    self.I_minus[v] = list() # marked for further improvement 
-            #for edge in self.G.out_edges(lower(self.block_dict[block])): # for s € {(w,x) € E | w = lower(A)}
-            #    w, x = edge
-            #    s = edge
-            #    self.N_minus[x] = list() # marked for further improvement
-            #    self.I_minus[x] = list() # marked for further improvement
-            #    self.I_plus[w] = list() # marked for further improvement
+            for edge in self.G.in_edges(upper(self.block_dict[block])): # for s € {(u,v) € E | v = upper(A)} 
+                u, v = edge
+                s = edge
+                self.N_plus[u] = list() # marked for further improvement
+                self.I_plus[u] = list() # marked for further improvement
+                self.I_minus[v] = list() # marked for further improvement 
+            for edge in self.G.out_edges(lower(self.block_dict[block])): # for s € {(w,x) € E | w = lower(A)}
+                w, x = edge
+                s = edge
+                self.N_minus[x] = list() # marked for further improvement
+                self.I_minus[x] = list() # marked for further improvement
+                self.I_plus[w] = list() # marked for further improvement
         
         for block in block_list: #
             logging.debug('block: ' + str(block))
