@@ -42,7 +42,7 @@ edge_color = str()
 savefile = './output/' + str(filename)
 
 
-def parse_input(input_format, path_to_file, *multigraph_key):
+def parse_input(input_format, path_to_file, *args):
     if input_format == 'graphml':
         G = GraphML(path_to_file).to_graph(multigraph_key)
     return G
