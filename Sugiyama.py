@@ -1,6 +1,6 @@
 import networkx as nx
 import random
-import remove_cycles
+from remove_cycles import remove_cycles
 from assign_levels import longest_path
 from global_sifting import GlobalSifting
 
