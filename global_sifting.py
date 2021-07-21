@@ -150,7 +150,6 @@ class GlobalSifting:
                 else:
                     self.I_minus[x].insert(j, p[s]) # marked for further improvement
                     self.I_plus[w].insert(p[s], j) # marked for further improvement
-        logging.debug('N_minus: ' + str(N_minus) + ' I_minus: ' + str(I_minus) + ' N_plus: ' + str(N_plus) + ' I_plus: ' + str(I_plus))
         
     def sifting_swap(self, A, B):
         logging.info('sifting swap for block A=' + str(A) + ' and Block B=' + str(B))
