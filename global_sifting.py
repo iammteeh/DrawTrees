@@ -299,19 +299,48 @@ class GlobalSifting:
                     raise Exception('No valid direction given.')
 
                 # swap entries at positions Id(a)[i]and Id(b)[j]in N−d(z)and in I−d(z)
+                #logging.debug(str(neighbors_opposite_z) +'length N[z]:' + str(len(neighbors_opposite_z)))
+                #logging.debug('length indices_opposite_z: ' + str(len(indices_opposite_z)))
+
+                #swap_neighbors = neighbors_opposite_z[indices_direction_a[i]]
+                #swap_indices = indices_opposite_z[indices_direction_a[i]]
+                
+                #neighbors_opposite_z[indices_direction_a[i]] = neighbors_opposite_z[indices_direction_b[j]]
+                #indices_opposite_z[indices_direction_a[i]] = indices_opposite_z[indices_direction_b[j]]
+                
+                #neighbors_opposite_z[indices_direction_b[j]] = swap_neighbors
+                #indices_opposite_z[indices_direction_b[j]] = swap_indices
+                
+                #indices_direction_a[i] += 1
+                #indices_direction_b[j] -= 1 
+                #i += 1
+                #j += 1
+                
                 logging.debug(str(neighbors_opposite_z) +'length N[z]:' + str(len(neighbors_opposite_z)))
+                pos_a_z = neighbors_opposite_z.index(A)
+                logging.debug('pos_a_z: ' + str(pos_a_z))
+                pos_b_z = neighbors_opposite_z.index(B)
+                logging.debug('pos_b_z: ' + str(pos_b_z))
                 logging.debug('length indices_opposite_z: ' + str(len(indices_opposite_z)))
 
-                swap_neighbors = neighbors_opposite_z[indices_direction_a[i]]
-                swap_indices = indices_opposite_z[indices_direction_a[i]]
-                
-                neighbors_opposite_z[indices_direction_a[i]] = neighbors_opposite_z[indices_direction_b[j]]
-                indices_opposite_z[indices_direction_a[i]] = indices_opposite_z[indices_direction_b[j]]
-                
-                neighbors_opposite_z[indices_direction_b[j]] = swap_neighbors
-                indices_opposite_z[indices_direction_b[j]] = swap_indices
-                
+                if pos_a_z < pos_b_z:
+                    neighbors_opposite_z.pop(pos_a_z)
+                    neighbors_opposite_z.pop(pos_b_z - 1)
+                    elem_a = indices_opposite_z.pop(pos_a_z)
+                    elem_b = indices_opposite_z.pop(pos_b_z - 1)
+                else:
+                    neighbors_opposite_z.pop(pos_b_z)
+                    neighbors_opposite_z.pop(pos_a_z - 1)
+                    elem_a = indices_opposite_z.pop(pos_b_z)
+                    elem_b = indices_opposite_z.pop(pos_a_z - 1)
+
+                neighbors_opposite_z.insert(pos_a_z, B)
+                neighbors_opposite_z.insert(pos_b_z, A)
+
+                indices_opposite_z.insert(pos_a_z, elem_b)
+                indices_opposite_z.insert(pos_b_z, elem_a)
+
                 indices_direction_a[i] += 1
                 indices_direction_b[j] -= 1 
                 i += 1
-                j += 1
+                j += 1 
