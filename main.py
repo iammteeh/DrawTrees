@@ -34,8 +34,8 @@ show_graph = False
 distance = 1
 
 # OUTPUT
-scale_x = 10 # figure size x
-scale_y = 10 # figure size y
+scale_x = 200 # figure size x
+scale_y = 30 # figure size y
 node_color = str()
 edge_color = str()
 
@@ -63,7 +63,7 @@ def assign_layout(G, graph_type):
 def main():
     for filename in graphlist:
         path_to_file = filepath + filename
-        savefile = './output/' + str(filename)
+        savefile = './output/' + filename
         G = parse_input(input_format, path_to_file, multigraph_key)
         pos = assign_layout(G, graph_type)
         
