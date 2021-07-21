@@ -61,7 +61,7 @@ def assign_layout(G, graph_type):
 
 
 def main():
-    G = parse_input(input_format, path_to_file)
+    G = parse_input(input_format, path_to_file, multigraph_key)
     pos = assign_layout(G, graph_type)
     
     # plotting
