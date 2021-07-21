@@ -152,8 +152,8 @@ class GlobalSifting:
                     self.I_minus[x].insert(j, p[s]) # marked for further improvement
                     self.I_plus[w].insert(p[s], j) # marked for further improvement
         
-        logging.debug('length N_minus' + str(len(N_minus.keys())))
-        logging.debug('length N_plus' + str(len(N_plus.keys())))
+        logging.debug('length N_minus' + str(len(self.N_minus.keys())))
+        logging.debug('length N_plus' + str(len(self.N_plus.keys())))
         
     def sifting_swap(self, A, B):
         logging.info('sifting swap for block A=' + str(A) + ' and Block B=' + str(B))
@@ -207,6 +207,9 @@ class GlobalSifting:
 
     def uswap(self, a, b, direction):
         logging.info('uswap for nodes ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
+        logging.debug('length block_list:' + str(len(block_list)))
+        logging.debug('length N_minus' + str(len(self.N_minus.keys())))
+        logging.debug('length N_plus' + str(len(self.N_plus.keys())))
         c = 0
         i = 0
         j = 0
