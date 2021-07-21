@@ -2,6 +2,15 @@ import copy, random
 import logging
 import networkx as nx
 
+def create_ordered_block_list(G):
+    block_dict = blockify_graph(G)
+    block_list = []
+    for block in block_dict.keys():
+        block_list.append(block)
+    # randomize order
+    random.shuffle(block_list)
+    return block_list, block_dict
+
 def blockify_graph(G):
     for node in G.nodes:
         nx.set_node_attributes(G, { node : False }, 'is_dummy')
