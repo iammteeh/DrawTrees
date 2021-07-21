@@ -103,18 +103,26 @@ class GlobalSifting:
         # init dict values
         for block in block_list:
             logging.debug('length block_list:' + str(len(block_list)))
-            for edge in self.G.in_edges(upper(self.block_dict[block])): # for s € {(u,v) € E | v = upper(A)} 
-                u, v = edge
-                s = edge
-                self.N_plus[u] = list() # marked for further improvement
-                self.I_plus[u] = list() # marked for further improvement
-                self.I_minus[v] = list() # marked for further improvement 
-            for edge in self.G.out_edges(lower(self.block_dict[block])): # for s € {(w,x) € E | w = lower(A)}
-                w, x = edge
-                s = edge
-                self.N_minus[x] = list() # marked for further improvement
-                self.I_minus[x] = list() # marked for further improvement
-                self.I_plus[w] = list() # marked for further improvement
+            upper_nodes = []
+            lower_nodes = []
+            upper_nodes.append(upper(self.block_dict[block]))
+            lower_nodes.append(lower(self.block_dict[block]))
+            for upper in upper_nodes:
+                N_minus[upper] = list()
+            for lower in lower_nodes:
+                N_plus[lower] = list()
+            #for edge in self.G.in_edges(upper(self.block_dict[block])): # for s € {(u,v) € E | v = upper(A)} 
+            #    u, v = edge
+            #    s = edge
+            #    self.N_plus[u] = list() # marked for further improvement
+            #    self.I_plus[u] = list() # marked for further improvement
+            #    self.I_minus[v] = list() # marked for further improvement 
+            #for edge in self.G.out_edges(lower(self.block_dict[block])): # for s € {(w,x) € E | w = lower(A)}
+            #    w, x = edge
+            #    s = edge
+            #    self.N_minus[x] = list() # marked for further improvement
+            #    self.I_minus[x] = list() # marked for further improvement
+            #    self.I_plus[w] = list() # marked for further improvement
         
         for block in block_list: #
             logging.debug('block: ' + str(block))
@@ -210,8 +218,6 @@ class GlobalSifting:
         logging.debug('length block_list:' + str(len(self.block_list)))
         logging.debug('length N_minus' + str(len(self.N_minus.keys())))
         logging.debug('length N_plus' + str(len(self.N_plus.keys())))
-        logging.debug('diff N_minus:' + str(self.block_list not in self.N_minus.keys()))
-        logging.debug('diff N_plus:' + str(self.block_list not in self.N_plus.keys()))
         c = 0
         i = 0
         j = 0
