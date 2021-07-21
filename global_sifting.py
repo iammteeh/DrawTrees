@@ -207,7 +207,7 @@ class GlobalSifting:
 
     def uswap(self, a, b, direction):
         logging.info('uswap for nodes ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
-        logging.debug('length block_list:' + str(len(block_list)))
+        logging.debug('length block_list:' + str(len(self.block_list)))
         logging.debug('length N_minus' + str(len(self.N_minus.keys())))
         logging.debug('length N_plus' + str(len(self.N_plus.keys())))
         c = 0
