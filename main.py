@@ -1,8 +1,8 @@
 import os, sys
 import logging
-import GraphML
+from GraphML import GraphML
 from DrawTree import assign_tree_layout
-import Sugiyama
+from Sugiyama import Sugiyama
 import networkx as nx
 import matplotlib.pyplot as plt
 # SYS
