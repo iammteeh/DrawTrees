@@ -14,8 +14,7 @@ input_format = 'graphml'
 #string = '((C)A,(D)B)F;' # for newick trees
 #file = 'phyliptree.nh' # newick tree data
 filepath = './data/Software-Engineering/'
-filename = 'JFtp.graphml' # GraphML MultiGraph data
-path_to_file = filepath + filename
+graphlist = [ 'JFtp.graphml', 'JUnit-4.12.graphml', 'Stripes-1.5.7.graphml', 'Checkstyle-6.5.graphml' ] # GraphML MultiGraph data
 multigraph_key = 'method-call' # Edge Key
 
 ## some nx graphs
@@ -39,7 +38,6 @@ scale_x = 10 # figure size x
 scale_y = 10 # figure size y
 node_color = str()
 edge_color = str()
-savefile = './output/' + str(filename)
 
 
 def parse_input(input_format, path_to_file, *args):
@@ -57,24 +55,27 @@ def assign_layout(G, graph_type):
         y_attributes = nx.get_node_attributes(G, 'y')
         pos_dict = dict()
         for node in G.nodes:
-            pos_dict[node] = (x_attributes[node], y_attributes[node])
+            pos_dict[node] = (x_attributes[node] * 10, y_attributes[node] * 5)
         return pos_dict
 
 
 
 def main():
-    G = parse_input(input_format, path_to_file, multigraph_key)
-    pos = assign_layout(G, graph_type)
-    
-    # plotting
-    plt.figure(1, figsize=(scale_x, scale_y))
-    nx.draw(G, pos=pos)
-    #plt.gca().invert_yaxis()
-    plt.savefig(savefile, format='png', dpi=60)
-    print("Figure saved in", savefile)
-    if show_graph:
-        plt.show()
-    plt.clf()
+    for filename in graphlist:
+        path_to_file = filepath + filename
+        savefile = './output/' + str(filename)
+        G = parse_input(input_format, path_to_file, multigraph_key)
+        pos = assign_layout(G, graph_type)
+        
+        # plotting
+        plt.figure(1, figsize=(scale_x, scale_y))
+        nx.draw(G, pos=pos)
+        #plt.gca().invert_yaxis()
+        plt.savefig(savefile, format='png', dpi=60)
+        print("Figure saved in", savefile)
+        if show_graph:
+            plt.show()
+        plt.clf()
 
 if __name__ == '__main__':
     main()
