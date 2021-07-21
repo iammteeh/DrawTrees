@@ -58,7 +58,7 @@ class GlobalSifting:
                 self.block_list = self.sifting_step(self.block_list, block)
         for node in self.G.nodes:
             logging.info('update pi of node: ' + str(node))
-            self.set_pi_of_node(self.node, self.get_pi_of_block(self.get_block_of_node(self.node)))
+            self.set_pi_of_node(node, self.get_pi_of_block(self.get_block_of_node(node)))
         
         for node in self.G.nodes(data='pi'):
             nx.set_node_attributes(self.G, { node: node[1] }, 'x')
@@ -102,6 +102,7 @@ class GlobalSifting:
 
         # init dict values
         for block in block_list:
+            logging.debug('length block_list:' + str(len(block_list)))
             for edge in self.G.in_edges(upper(self.block_dict[block])): # for s € {(u,v) € E | v = upper(A)} 
                 u, v = edge
                 s = edge
@@ -150,6 +151,9 @@ class GlobalSifting:
                 else:
                     self.I_minus[x].insert(j, p[s]) # marked for further improvement
                     self.I_plus[w].insert(p[s], j) # marked for further improvement
+        
+        logging.debug('length N_minus' + str(len(N_minus.keys())))
+        logging.debug('length N_plus' + str(len(N_plus.keys())))
         
     def sifting_swap(self, A, B):
         logging.info('sifting swap for block A=' + str(A) + ' and Block B=' + str(B))
