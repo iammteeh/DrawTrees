@@ -6,14 +6,16 @@ import Sugiyama
 import networkx as nx
 import matplotlib.pyplot as plt
 # SYS
-logging.getLogger().setLevel(logging.WARNING)
+logging.getLogger().setLevel(logging.DEBUG)
 
 ## INPUT
 graph_type = 'DiGraph'
 input_format = 'graphml'
 #string = '((C)A,(D)B)F;' # for newick trees
 #file = 'phyliptree.nh' # newick tree data
-file = './graphml/JFtp.graphml' # GraphML MultiGraph data
+filepath = './data/Software-Engineering/'
+filename = 'JFtp.graphml' # GraphML MultiGraph data
+path_to_file = filepath + filename
 multigraph_key = 'method-call' # Edge Key
 
 ## some nx graphs
@@ -29,39 +31,47 @@ for edge in g.edges:
 ## 
 
 # CUSTOM
+show_graph = False
 distance = 1
+
+# OUTPUT
 scale_x = 10 # figure size x
 scale_y = 10 # figure size y
 node_color = str()
 edge_color = str()
-savefile = str()
+savefile = './output/' + str(filename)
 
 
-def parse_input(input_format, file, *multigraph_key):
+def parse_input(input_format, path_to_file, *multigraph_key):
     if input_format == 'graphml':
-        G = GraphML(file).to_graph(multigraph_key)
+        G = GraphML(path_to_file).to_graph(multigraph_key)
     return G
 
 def assign_layout(G, graph_type):
     if graph_type == 'tree':
         pos = assign_tree_layout(G)
+        return pos
     elif graph_type == 'DiGraph':
-        pos = Sugiyama(G)
+        G = Sugiyama(G)
+        for node in G.nodes(data=True):
+            nx.set_node_attributes(G, { node : (node[1]['x'], node[1]['y']) }, 'pos')
+        pos = nx.get_node_attributes(G,'pos')
+        return pos
 
 
 
 def main():
-    G = parse_input(input_format, file)
+    G = parse_input(input_format, path_to_file)
     pos = assign_layout(G, graph_type)
     
     # plotting
     plt.figure(1, figsize=(scale_x, scale_y))
-    nx.draw(G, pos=pos, node_color=node_color, edge_color=edge_color, with_labels=True)
-    plt.gca().invert_yaxis()
-    plt.savefig(savefile, format='png', dpi=300)
+    nx.draw(G, pos=pos)
+    #plt.gca().invert_yaxis()
+    plt.savefig(savefile, format='png', dpi=60)
     print("Figure saved in", savefile)
-    #if show_graph:
-    plt.show()
+    if show_graph:
+        plt.show()
     plt.clf()
 
 if __name__ == '__main__':
