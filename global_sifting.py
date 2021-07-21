@@ -210,6 +210,8 @@ class GlobalSifting:
         logging.debug('length block_list:' + str(len(self.block_list)))
         logging.debug('length N_minus' + str(len(self.N_minus.keys())))
         logging.debug('length N_plus' + str(len(self.N_plus.keys())))
+        logging.debug('diff N_minus:' + str(self.block_list not in N_minus.keys()))
+        logging.debug('diff N_plus:' + str(self.block_list not in N_plus.keys()))
         c = 0
         i = 0
         j = 0
