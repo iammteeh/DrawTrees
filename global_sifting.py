@@ -107,9 +107,9 @@ class GlobalSifting:
             lower_nodes = []
             upper_nodes.append(upper(self.block_dict[block]))
             lower_nodes.append(lower(self.block_dict[block]))
-            for upper in upper_nodes:
+            for up in upper_nodes:
                 N_minus[upper] = list()
-            for lower in lower_nodes:
+            for low in lower_nodes:
                 N_plus[lower] = list()
             #for edge in self.G.in_edges(upper(self.block_dict[block])): # for s € {(u,v) € E | v = upper(A)} 
             #    u, v = edge
