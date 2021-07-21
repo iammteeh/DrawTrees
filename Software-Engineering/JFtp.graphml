@@ -1,0 +1,2881 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:my="myFunctions">
+<key id="inheritance" for="edge" attr.name="inheritance" attr.type="double"/>
+<key id="implementation" for="edge" attr.name="implementation" attr.type="double"/>
+<key id="aggregation" for="edge" attr.name="aggregation" attr.type="double"/>
+<key id="method-call" for="edge" attr.name="method-call" attr.type="double"/>
+<key id="parameter" for="edge" attr.name="parameter" attr.type="double"/>
+<key id="return-type" for="edge" attr.name="return-type" attr.type="double"/>
+<key id="throws" for="edge" attr.name="throws" attr.type="double"/>
+<key id="package" for="edge" attr.name="package" attr.type="double"/>
+<graph>
+<node id="net.sf.jftp.tools.FileSearch" type="class"/>
+<node id="net.sf.jftp.tools.Shell" type="class"/>
+<node id="net.sf.jftp.tools.Shell$1" type="class"/>
+<node id="net.sf.jftp.tools.RSSFeeder" type="class"/>
+<node id="net.sf.jftp.tools.Holer" type="class"/>
+<node id="net.sf.jftp.tools.RSSParser" type="class"/>
+<node id="net.sf.jftp.tools.HttpSpider" type="class"/>
+<node id="net.sf.jftp.tools.Getter" type="class"/>
+<node id="net.sf.jftp.JFtp" type="class"/>
+<node id="net.sf.jftp.JFtp$DTListener" type="class"/>
+<node id="net.sf.jftp.system.LocalIO" type="class"/>
+<node id="net.sf.jftp.system.logging.Log" type="class"/>
+<node id="net.sf.jftp.system.logging.SystemLogger" type="class"/>
+<node id="net.sf.jftp.system.logging.Logger" type="interface"/>
+<node id="net.sf.jftp.system.CommandLine" type="class"/>
+<node id="net.sf.jftp.system.StringUtils" type="class"/>
+<node id="net.sf.jftp.system.UpdateDaemon" type="class"/>
+<node id="net.sf.jftp.config.Crypto" type="class"/>
+<node id="net.sf.jftp.config.LoadSet" type="class"/>
+<node id="net.sf.jftp.config.Settings" type="class"/>
+<node id="net.sf.jftp.config.SaveSet" type="class"/>
+<node id="net.sf.jftp.JFtp$3" type="class"/>
+<node id="net.sf.jftp.event.EventHandler" type="interface"/>
+<node id="net.sf.jftp.event.Acceptor" type="interface"/>
+<node id="net.sf.jftp.event.Event" type="class"/>
+<node id="net.sf.jftp.event.FtpEventConstants" type="interface"/>
+<node id="net.sf.jftp.event.FtpEvent" type="class"/>
+<node id="net.sf.jftp.event.EventCollector" type="class"/>
+<node id="net.sf.jftp.event.EventProcessor" type="class"/>
+<node id="net.sf.jftp.event.FtpEventHandler" type="class"/>
+<node id="net.sf.jftp.JFtp$1" type="class"/>
+<node id="net.sf.jftp.JFtp$2" type="class"/>
+<node id="net.sf.jftp.net.FtpConnection" type="class"/>
+<node id="net.sf.jftp.net.FtpURLConnection" type="class"/>
+<node id="net.sf.jftp.net.FtpKeepAliveThread" type="class"/>
+<node id="net.sf.jftp.net.FtpClient" type="class"/>
+<node id="net.sf.jftp.net.DataConnection" type="class"/>
+<node id="net.sf.jftp.net.Transfer" type="class"/>
+<node id="net.sf.jftp.net.BasicConnection" type="interface"/>
+<node id="net.sf.jftp.net.ConnectionHandler" type="class"/>
+<node id="net.sf.jftp.net.FilesystemConnection" type="class"/>
+<node id="net.sf.jftp.net.ConnectionListener" type="interface"/>
+<node id="net.sf.jftp.net.wrappers.SmbTest" type="class"/>
+<node id="net.sf.jftp.net.wrappers.StartConnection" type="class"/>
+<node id="net.sf.jftp.net.wrappers.HttpTransfer" type="class"/>
+<node id="net.sf.jftp.net.wrappers.Sftp2Connection" type="class"/>
+<node id="net.sf.jftp.net.wrappers.NfsConnection" type="class"/>
+<node id="net.sf.jftp.net.wrappers.SmbTransfer" type="class"/>
+<node id="net.sf.jftp.net.wrappers.Sftp2Transfer" type="class"/>
+<node id="net.sf.jftp.net.wrappers.MyUserInfo" type="class"/>
+<node id="net.sf.jftp.net.wrappers.WebdavConnection" type="class"/>
+<node id="net.sf.jftp.net.wrappers.SmbConnection" type="class"/>
+<node id="net.sf.jftp.net.FtpTransfer" type="class"/>
+<node id="net.sf.jftp.net.JConnection" type="class"/>
+<node id="net.sf.jftp.net.FtpConstants" type="interface"/>
+<node id="net.sf.jftp.net.FtpURLStreamHandler" type="class"/>
+<node id="net.sf.jftp.net.server.FtpServer" type="class"/>
+<node id="net.sf.jftp.net.server.FtpServerSocket" type="class"/>
+<node id="net.sf.jftp.gui.base.RemoteDir" type="class"/>
+<node id="net.sf.jftp.gui.base.LogFlusher" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.MaterializedTableModel" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.DirLister" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.DirCellRenderer" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.DirComponent" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.ColoredCellRenderer" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.TableUtils$1" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.Dir" type="interface"/>
+<node id="net.sf.jftp.gui.base.dir.DirEntry" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.TableUtils" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.DirCanvas" type="class"/>
+<node id="net.sf.jftp.gui.base.dir.DirPanel" type="class"/>
+<node id="net.sf.jftp.gui.base.RemoteDir$3" type="class"/>
+<node id="net.sf.jftp.gui.base.RemoteDir$2" type="class"/>
+<node id="net.sf.jftp.gui.base.AppMenuBar" type="class"/>
+<node id="net.sf.jftp.gui.base.FtpHost" type="class"/>
+<node id="net.sf.jftp.gui.base.LocalDir$4" type="class"/>
+<node id="net.sf.jftp.gui.base.UITool" type="class"/>
+<node id="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" type="class"/>
+<node id="net.sf.jftp.gui.base.UIUtils" type="class"/>
+<node id="net.sf.jftp.gui.base.StatusPanel" type="class"/>
+<node id="net.sf.jftp.gui.base.LocalDir$5" type="class"/>
+<node id="net.sf.jftp.gui.base.LocalDir" type="class"/>
+<node id="net.sf.jftp.gui.base.DownloadQueue$QueueRecord" type="class"/>
+<node id="net.sf.jftp.gui.base.LocalDir$1" type="class"/>
+<node id="net.sf.jftp.gui.base.DownloadQueue" type="class"/>
+<node id="net.sf.jftp.gui.base.ResumeDialog" type="class"/>
+<node id="net.sf.jftp.gui.base.LocalDir$3" type="class"/>
+<node id="net.sf.jftp.gui.base.RemoteDir$1" type="class"/>
+<node id="net.sf.jftp.gui.base.Spawn" type="class"/>
+<node id="net.sf.jftp.gui.base.LocalDir$2" type="class"/>
+<node id="net.sf.jftp.gui.base.DownloadList" type="class"/>
+<node id="net.sf.jftp.gui.base.RemoteDir$5" type="class"/>
+<node id="net.sf.jftp.gui.base.StatusCanvas" type="class"/>
+<node id="net.sf.jftp.gui.base.RemoteDir$4" type="class"/>
+<node id="net.sf.jftp.gui.base.StatusCanvas$1" type="class"/>
+<node id="net.sf.jftp.gui.base.Properties" type="class"/>
+<node id="net.sf.jftp.gui.hostchooser.HostChooser" type="class"/>
+<node id="net.sf.jftp.gui.hostchooser.WebdavHostChooser" type="class"/>
+<node id="net.sf.jftp.gui.hostchooser.SmbHostChooser" type="class"/>
+<node id="net.sf.jftp.gui.hostchooser.SftpHostChooser" type="class"/>
+<node id="net.sf.jftp.gui.hostchooser.NfsHostChooser" type="class"/>
+<node id="net.sf.jftp.gui.tasks.NameChooser" type="class"/>
+<node id="net.sf.jftp.gui.tasks.ImagePanel" type="class"/>
+<node id="net.sf.jftp.gui.tasks.Renamer" type="class"/>
+<node id="net.sf.jftp.gui.tasks.LastConnections" type="class"/>
+<node id="net.sf.jftp.gui.tasks.ExternalDisplayer$1" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HostList$2" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HostList$6" type="class"/>
+<node id="net.sf.jftp.gui.tasks.BookmarkManager" type="class"/>
+<node id="net.sf.jftp.gui.tasks.Displayer$1" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HttpBrowser" type="class"/>
+<node id="net.sf.jftp.gui.tasks.AddBookmarks" type="class"/>
+<node id="net.sf.jftp.gui.tasks.RemoteCommand" type="class"/>
+<node id="net.sf.jftp.gui.tasks.AutoRemover" type="class"/>
+<node id="net.sf.jftp.gui.tasks.AdvancedOptions" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HostList$4" type="class"/>
+<node id="net.sf.jftp.gui.tasks.NativeHttpBrowser" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HostList" type="class"/>
+<node id="net.sf.jftp.gui.tasks.ExternalDisplayer" type="class"/>
+<node id="net.sf.jftp.gui.tasks.ImageViewer" type="class"/>
+<node id="net.sf.jftp.gui.tasks.Creator" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HostList$1" type="class"/>
+<node id="net.sf.jftp.gui.tasks.Displayer" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HostList$3" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HttpDownloader" type="class"/>
+<node id="net.sf.jftp.gui.tasks.Remover" type="class"/>
+<node id="net.sf.jftp.gui.tasks.RemoverQuery" type="class"/>
+<node id="net.sf.jftp.gui.tasks.ProxyChooser" type="class"/>
+<node id="net.sf.jftp.gui.tasks.PathChanger" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HostInfo" type="class"/>
+<node id="net.sf.jftp.gui.tasks.HostList$5" type="class"/>
+<node id="net.sf.jftp.gui.tasks.BookmarkItem" type="class"/>
+<node id="net.sf.jftp.gui.framework.FileTransferable" type="class"/>
+<node id="net.sf.jftp.gui.framework.HTextField" type="class"/>
+<node id="net.sf.jftp.gui.framework.HButton" type="class"/>
+<node id="net.sf.jftp.gui.framework.HTextField$1" type="class"/>
+<node id="net.sf.jftp.gui.framework.HComboBox" type="class"/>
+<node id="net.sf.jftp.gui.framework.HTextField$2" type="class"/>
+<node id="net.sf.jftp.gui.framework.Template" type="class"/>
+<node id="net.sf.jftp.gui.framework.GUIDefaults" type="class"/>
+<node id="net.sf.jftp.gui.framework.TransferComponent" type="class"/>
+<node id="net.sf.jftp.gui.framework.LoadPanel" type="class"/>
+<node id="net.sf.jftp.gui.framework.HImageButton" type="class"/>
+<node id="net.sf.jftp.gui.framework.HDesktopBackground" type="class"/>
+<node id="net.sf.jftp.gui.framework.HFrame" type="class"/>
+<node id="net.sf.jftp.gui.framework.Updater" type="class"/>
+<node id="net.sf.jftp.gui.framework.HImage" type="class"/>
+<node id="net.sf.jftp.gui.framework.BorderPanel" type="class"/>
+<node id="net.sf.jftp.gui.framework.HPanel" type="class"/>
+<node id="net.sf.jftp.gui.framework.ProgressBarList$1" type="class"/>
+<node id="net.sf.jftp.gui.framework.ProgressBarList" type="class"/>
+<node id="net.sf.jftp.gui.framework.HInsetPanel" type="class"/>
+<node id="net.sf.jftp.gui.framework.ProgressbarItem" type="class"/>
+<node id="net.sf.jftp.gui.framework.HPasswordField" type="class"/>
+<node id="net.sf.jftp.JFtpApplet" type="class"/>
+<node id="net.sf.jftp.JFtpApplet$1" type="class"/>
+<node id="net.sf.jftp.util.JHostChooser" type="class"/>
+<node id="net.sf.jftp.util.RawConnection$1" type="class"/>
+<node id="net.sf.jftp.util.JRawConnection" type="class"/>
+<node id="net.sf.jftp.util.RawConnection" type="class"/>
+<node id="net.sf.jftp.util.ZipFileCreator" type="class"/>
+<node id="net.sf.jftp.util.JReciever" type="class"/>
+<edge source="net.sf.jftp.tools.FileSearch" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.FileSearch" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.FileSearch" target="net.sf.jftp.tools.Getter">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Shell" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Shell" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Shell" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Shell" target="net.sf.jftp.tools.Shell">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Shell$1" target="net.sf.jftp.tools.Shell">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Shell$1" target="net.sf.jftp.tools.Shell">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Shell$1" target="net.sf.jftp.tools.Shell">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Shell$1" target="net.sf.jftp.tools.Shell$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.tools.RSSParser">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.RSSFeeder" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Holer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Holer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.tools.Holer">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.HttpSpider" target="net.sf.jftp.tools.Holer">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.tools.Getter" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.system.logging.Logger">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.AppMenuBar">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.DownloadList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.LogFlusher">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.StatusPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.framework.HDesktopBackground">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.hostchooser.HostChooser">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.tasks.HostInfo">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.system.UpdateDaemon">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.tools.RSSFeeder">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.AppMenuBar">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.DownloadList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.DownloadList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.DownloadList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.StatusPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.StatusPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.base.StatusPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.framework.HDesktopBackground">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.framework.HImage">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.gui.hostchooser.HostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp" target="net.sf.jftp.system.UpdateDaemon">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$DTListener" target="net.sf.jftp.JFtp">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$DTListener" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$DTListener" target="net.sf.jftp.system.UpdateDaemon">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$DTListener" target="net.sf.jftp.JFtp">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$DTListener" target="net.sf.jftp.JFtp$DTListener">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.logging.Log" target="net.sf.jftp.system.logging.Log">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.logging.Log" target="net.sf.jftp.system.logging.Logger">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.logging.Log" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.logging.Log" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.logging.Log" target="net.sf.jftp.system.logging.Logger">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.logging.Log" target="net.sf.jftp.system.logging.Logger">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.logging.Log" target="net.sf.jftp.system.logging.Logger">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.logging.SystemLogger" target="net.sf.jftp.system.logging.Logger">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.CommandLine" target="net.sf.jftp.event.EventHandler">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.CommandLine" target="net.sf.jftp.event.FtpEventConstants">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.CommandLine" target="net.sf.jftp.event.EventCollector">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.CommandLine" target="net.sf.jftp.event.EventCollector">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.CommandLine" target="net.sf.jftp.event.EventProcessor">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.CommandLine" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.CommandLine" target="net.sf.jftp.event.Event">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.UpdateDaemon" target="net.sf.jftp.JFtp">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.UpdateDaemon" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.UpdateDaemon" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.UpdateDaemon" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.UpdateDaemon" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.UpdateDaemon" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.system.UpdateDaemon" target="net.sf.jftp.JFtp">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.config.LoadSet" target="net.sf.jftp.config.Crypto">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.config.LoadSet" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.config.LoadSet" target="net.sf.jftp.gui.base.UIUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.config.LoadSet" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.config.SaveSet" target="net.sf.jftp.config.Crypto">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.config.SaveSet" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$3" target="net.sf.jftp.JFtp$3">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.FtpEvent" target="net.sf.jftp.event.Event">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.EventCollector" target="net.sf.jftp.event.Acceptor">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.EventCollector" target="net.sf.jftp.event.Event">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.EventProcessor" target="net.sf.jftp.event.Acceptor">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.EventProcessor" target="net.sf.jftp.event.EventHandler">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.EventProcessor" target="net.sf.jftp.event.FtpEventConstants">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.EventProcessor" target="net.sf.jftp.event.Event">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.EventProcessor" target="net.sf.jftp.event.EventHandler">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.EventProcessor" target="net.sf.jftp.event.Event">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.EventProcessor" target="net.sf.jftp.event.EventHandler">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.FtpEventHandler" target="net.sf.jftp.event.EventHandler">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.FtpEventHandler" target="net.sf.jftp.event.Event">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.FtpEventHandler" target="net.sf.jftp.event.FtpEvent">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.event.FtpEventHandler" target="net.sf.jftp.event.Event">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$1" target="net.sf.jftp.JFtp">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$1" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$1" target="net.sf.jftp.JFtp">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$1" target="net.sf.jftp.JFtp$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$2" target="net.sf.jftp.JFtp">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$2" target="net.sf.jftp.JFtp">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtp$2" target="net.sf.jftp.JFtp$2">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.config.LoadSet">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpURLConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.DataConnection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.DataConnection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.DataConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.DataConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FilesystemConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FilesystemConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FilesystemConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FilesystemConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FilesystemConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.gui.tasks.LastConnections">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.gui.tasks.LastConnections">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.gui.tasks.LastConnections">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.StartConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.HttpTransfer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.HttpTransfer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.HttpTransfer" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.Sftp2Connection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.Sftp2Connection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.Sftp2Connection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.Sftp2Connection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.Sftp2Connection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.Sftp2Connection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.NfsConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.NfsConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.NfsConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.NfsConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.WebdavConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.WebdavConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.WebdavConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.WebdavConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.WebdavConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.SmbConnection" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.SmbConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.SmbConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.SmbConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.wrappers.SmbConnection" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpTransfer" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.FtpTransfer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.JConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.JConnection" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.server.FtpServer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.net.server.FtpServerSocket" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirComponent">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirCanvas">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.TableUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.DownloadList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.DownloadList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.UITool">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.framework.HImage">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.system.UpdateDaemon">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.system.UpdateDaemon">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.system.UpdateDaemon">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LogFlusher" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirLister" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCellRenderer" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCellRenderer" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCellRenderer" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCellRenderer" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCellRenderer" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCellRenderer" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCellRenderer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirComponent" target="net.sf.jftp.gui.base.dir.DirPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirComponent" target="net.sf.jftp.gui.base.dir.DirPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirComponent" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirComponent" target="net.sf.jftp.gui.base.dir.TableUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirComponent" target="net.sf.jftp.gui.base.dir.TableUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.ColoredCellRenderer" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.TableUtils$1" target="net.sf.jftp.gui.base.dir.MaterializedTableModel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.TableUtils$1" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.TableUtils$1" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.TableUtils$1" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.TableUtils$1" target="net.sf.jftp.gui.base.dir.TableUtils$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirEntry" target="net.sf.jftp.gui.framework.HImage">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCanvas" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCanvas" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCanvas" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCanvas" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCanvas" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCanvas" target="net.sf.jftp.gui.base.UITool">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirCanvas" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirPanel" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirPanel" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="implementation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirPanel" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirPanel" target="net.sf.jftp.gui.base.DownloadList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.dir.DirPanel" target="net.sf.jftp.gui.base.DownloadList">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.dir.TableUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$3" target="net.sf.jftp.gui.base.RemoteDir$3">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$2" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$2" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$2" target="net.sf.jftp.gui.base.RemoteDir$2">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.base.UIUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.base.UIUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.HostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.HostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.NfsHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.NfsHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.SftpHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.SftpHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.SmbHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.SmbHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.WebdavHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.hostchooser.WebdavHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.AddBookmarks">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.BookmarkItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.BookmarkItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.BookmarkItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.BookmarkItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.BookmarkItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.BookmarkItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.BookmarkItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.BookmarkItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.LastConnections">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.gui.tasks.NativeHttpBrowser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.tools.RSSFeeder">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.AppMenuBar" target="net.sf.jftp.JFtp">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$4" target="net.sf.jftp.gui.base.LocalDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$4" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$4" target="net.sf.jftp.gui.base.LocalDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$4" target="net.sf.jftp.gui.base.LocalDir$4">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue$QueueRecord">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$queueDownloader" target="net.sf.jftp.gui.base.DownloadQueue$queueDownloader">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.JFtp">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.HostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.HostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.NfsHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.NfsHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.SftpHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.SftpHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.SmbHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.SmbHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.WebdavHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.hostchooser.WebdavHostChooser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.gui.tasks.NativeHttpBrowser">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusPanel" target="net.sf.jftp.JFtp">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$5" target="net.sf.jftp.gui.base.LocalDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$5" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$5" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$5" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$5" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$5" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$5" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$5" target="net.sf.jftp.gui.base.LocalDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$5" target="net.sf.jftp.gui.base.LocalDir$5">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirComponent">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirCanvas">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirLister">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.TableUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.DownloadList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.UITool">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.UITool">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.UITool">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.UIUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HImage">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.system.UpdateDaemon">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.system.UpdateDaemon">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.LocalDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$QueueRecord" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue$QueueRecord" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$1" target="net.sf.jftp.gui.base.LocalDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$1" target="net.sf.jftp.gui.base.LocalDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$1" target="net.sf.jftp.gui.base.LocalDir$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.base.DownloadQueue$queueDownloader">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.base.DownloadQueue$QueueRecord">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.base.DownloadQueue$queueDownloader">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.base.DownloadQueue$queueDownloader">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadQueue" target="net.sf.jftp.gui.base.DownloadQueue">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.ResumeDialog" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.ResumeDialog" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.ResumeDialog" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.ResumeDialog" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.ResumeDialog" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.ResumeDialog" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.ResumeDialog" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.ResumeDialog" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.LocalDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.dir.TableUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.LocalDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.LocalDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$3" target="net.sf.jftp.gui.base.LocalDir$3">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$1" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$1" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$1" target="net.sf.jftp.gui.base.RemoteDir$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$2" target="net.sf.jftp.gui.base.LocalDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$2" target="net.sf.jftp.gui.base.LocalDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.LocalDir$2" target="net.sf.jftp.gui.base.LocalDir$2">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.HImageButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.HImage">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.ProgressbarItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.system.UpdateDaemon">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.DownloadList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$5" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$5" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$5" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$5" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$5" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$5" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$5" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$5" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$5" target="net.sf.jftp.gui.base.RemoteDir$5">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusCanvas" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$4" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$4" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$4" target="net.sf.jftp.gui.base.RemoteDir">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.RemoteDir$4" target="net.sf.jftp.gui.base.RemoteDir$4">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusCanvas$1" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusCanvas$1" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusCanvas$1" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusCanvas$1" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusCanvas$1" target="net.sf.jftp.gui.base.StatusCanvas">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.StatusCanvas$1" target="net.sf.jftp.gui.base.StatusCanvas$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.Properties" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.Properties" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.Properties" target="net.sf.jftp.gui.framework.HPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.Properties" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.Properties" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.Properties" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.base.Properties" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.config.LoadSet">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HInsetPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HInsetPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.gui.tasks.HostList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.HostChooser" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.WebdavHostChooser" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.config.LoadSet">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HInsetPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HInsetPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SmbHostChooser" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.config.LoadSet">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HInsetPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HInsetPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.SftpHostChooser" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.config.LoadSet">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HInsetPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HInsetPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.hostchooser.NfsHostChooser" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.NameChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.NameChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.NameChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.NameChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.NameChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Renamer" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Renamer" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Renamer" target="net.sf.jftp.gui.framework.HPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Renamer" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Renamer" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Renamer" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Renamer" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Renamer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.LastConnections" target="net.sf.jftp.JFtp">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.LastConnections" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.LastConnections" target="net.sf.jftp.JFtp">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ExternalDisplayer$1" target="net.sf.jftp.gui.tasks.ExternalDisplayer">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ExternalDisplayer$1" target="net.sf.jftp.gui.tasks.ExternalDisplayer">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ExternalDisplayer$1" target="net.sf.jftp.gui.tasks.ExternalDisplayer">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ExternalDisplayer$1" target="net.sf.jftp.gui.tasks.ExternalDisplayer$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$2" target="net.sf.jftp.gui.tasks.HostList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$2" target="net.sf.jftp.gui.tasks.HostList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$2" target="net.sf.jftp.gui.tasks.HostList">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$2" target="net.sf.jftp.gui.tasks.HostList$2">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$6" target="net.sf.jftp.gui.tasks.HostList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$6" target="net.sf.jftp.gui.tasks.HostList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$6" target="net.sf.jftp.gui.tasks.HostList">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$6" target="net.sf.jftp.gui.tasks.HostList$6">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.BookmarkManager" target="net.sf.jftp.gui.base.AppMenuBar">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.BookmarkManager" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.BookmarkManager" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.BookmarkManager" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Displayer$1" target="net.sf.jftp.gui.tasks.Displayer">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Displayer$1" target="net.sf.jftp.gui.tasks.Displayer">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Displayer$1" target="net.sf.jftp.gui.tasks.Displayer$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpBrowser" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpBrowser" target="net.sf.jftp.gui.base.StatusPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpBrowser" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpBrowser" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HComboBox">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.JFtp">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.base.AppMenuBar">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HComboBox">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HComboBox">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HComboBox">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HComboBox">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HPasswordField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AddBookmarks" target="net.sf.jftp.JFtp">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoteCommand" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AutoRemover" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AutoRemover" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AutoRemover" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AutoRemover" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AutoRemover" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AdvancedOptions" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AdvancedOptions" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AdvancedOptions" target="net.sf.jftp.config.LoadSet">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AdvancedOptions" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AdvancedOptions" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AdvancedOptions" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.AdvancedOptions" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$4" target="net.sf.jftp.gui.tasks.HostList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$4" target="net.sf.jftp.gui.tasks.HostList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$4" target="net.sf.jftp.gui.tasks.HostList">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$4" target="net.sf.jftp.gui.tasks.HostList$4">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList" target="net.sf.jftp.gui.base.FtpHost">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList" target="net.sf.jftp.config.LoadSet">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList" target="net.sf.jftp.system.StringUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList" target="net.sf.jftp.gui.base.FtpHost">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ExternalDisplayer" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ExternalDisplayer" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ExternalDisplayer" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ExternalDisplayer" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ExternalDisplayer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ImageViewer" target="net.sf.jftp.gui.tasks.ImagePanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ImageViewer" target="net.sf.jftp.gui.tasks.ImagePanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ImageViewer" target="net.sf.jftp.gui.tasks.ImagePanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Creator" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Creator" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Creator" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Creator" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Creator" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$1" target="net.sf.jftp.gui.tasks.HostList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$1" target="net.sf.jftp.gui.tasks.HostList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$1" target="net.sf.jftp.gui.tasks.HostList">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$1" target="net.sf.jftp.gui.tasks.HostList$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Displayer" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Displayer" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Displayer" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$3" target="net.sf.jftp.gui.tasks.HostList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$3" target="net.sf.jftp.gui.tasks.HostList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$3" target="net.sf.jftp.gui.tasks.HostList">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$3" target="net.sf.jftp.gui.tasks.HostList$3">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpDownloader" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpDownloader" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpDownloader" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpDownloader" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpDownloader" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpDownloader" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpDownloader" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HttpDownloader" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Remover" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Remover" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Remover" target="net.sf.jftp.gui.framework.HPanel">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Remover" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Remover" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Remover" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Remover" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Remover" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.Remover" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoverQuery" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoverQuery" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.RemoverQuery" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.ProxyChooser" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.PathChanger" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.PathChanger" target="net.sf.jftp.gui.framework.HButton">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.PathChanger" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.PathChanger" target="net.sf.jftp.gui.base.dir.Dir">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.PathChanger" target="net.sf.jftp.gui.framework.HButton">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.PathChanger" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$5" target="net.sf.jftp.gui.tasks.HostList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$5" target="net.sf.jftp.gui.tasks.HostList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$5" target="net.sf.jftp.gui.tasks.HostList">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.HostList$5" target="net.sf.jftp.gui.tasks.HostList$5">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.tasks.BookmarkItem" target="net.sf.jftp.gui.base.UIUtils">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HTextField$1" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HTextField$1" target="net.sf.jftp.gui.framework.HTextField">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HTextField$1" target="net.sf.jftp.gui.framework.HTextField$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HTextField$2" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HTextField$2" target="net.sf.jftp.gui.framework.HTextField">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HTextField$2" target="net.sf.jftp.gui.framework.HTextField$2">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.Template" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.Template" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.TransferComponent" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.LoadPanel" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HImageButton" target="net.sf.jftp.gui.base.StatusPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HImageButton" target="net.sf.jftp.gui.framework.HImage">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HDesktopBackground" target="net.sf.jftp.config.Settings">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HDesktopBackground" target="net.sf.jftp.gui.framework.HImage">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HImage" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList$1" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList$1" target="net.sf.jftp.gui.framework.ProgressbarItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList$1" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList$1" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList$1" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList$1" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList$1" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList$1" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList$1" target="net.sf.jftp.gui.framework.ProgressBarList$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList" target="net.sf.jftp.gui.framework.ProgressbarItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList" target="net.sf.jftp.gui.framework.ProgressbarItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList" target="net.sf.jftp.gui.framework.ProgressbarItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList" target="net.sf.jftp.gui.framework.ProgressbarItem">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList" target="net.sf.jftp.gui.framework.ProgressBarList">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressBarList" target="net.sf.jftp.gui.framework.ProgressbarItem">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HInsetPanel" target="net.sf.jftp.gui.framework.HPanel">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.HInsetPanel" target="net.sf.jftp.gui.framework.HPanel">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressbarItem" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressbarItem" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.gui.framework.ProgressbarItem" target="net.sf.jftp.gui.base.dir.DirEntry">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtpApplet$1" target="net.sf.jftp.JFtpApplet">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtpApplet$1" target="net.sf.jftp.JFtp">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtpApplet$1" target="net.sf.jftp.JFtpApplet">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.JFtpApplet$1" target="net.sf.jftp.JFtpApplet$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.JHostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="inheritance">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.JHostChooser" target="net.sf.jftp.gui.framework.HFrame">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.JHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.JHostChooser" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection$1" target="net.sf.jftp.util.RawConnection">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection$1" target="net.sf.jftp.util.RawConnection">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection$1" target="net.sf.jftp.util.RawConnection">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection$1" target="net.sf.jftp.util.RawConnection$1">
+<data key="return-type">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.JRawConnection" target="net.sf.jftp.util.JReciever">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection" target="net.sf.jftp.gui.framework.HTextField">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection" target="net.sf.jftp.util.JRawConnection">
+<data key="aggregation">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection" target="net.sf.jftp.gui.framework.HTextField">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection" target="net.sf.jftp.util.JRawConnection">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection" target="net.sf.jftp.util.JRawConnection">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.RawConnection" target="net.sf.jftp.util.RawConnection">
+<data key="parameter">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.ZipFileCreator" target="net.sf.jftp.system.logging.Log">
+<data key="method-call">1.0</data>
+</edge>
+<edge source="net.sf.jftp.util.JReciever" target="net.sf.jftp.system.LocalIO">
+<data key="method-call">1.0</data>
+</edge>
+</graph>
+</graphml>
