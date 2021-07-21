@@ -222,20 +222,3 @@ def assign_tree_layout(tree):
     pos=nx.get_node_attributes(Tree,'pos')
     nx.draw(Tree,pos, with_labels=True)
     return pos
-
-# sys
-logging.getLogger().setLevel(logging.WARNING)
-
-# input
-string = '((C)A,(D)B)F;'
-#file = 'phyliptree.nh'
-file = './bt/hg38.100way.nh'
-
-# customization
-distance = 1
-x = 10 # figure size x
-y = 10 # figure size y
-
-# execution
-tree = ete3(file,1) # choose to parse with newick(file), ete3(file,format) or graphml_to_ete3(file)
-DrawTree(tree)
