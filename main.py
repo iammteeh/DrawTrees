@@ -6,7 +6,7 @@ from Sugiyama import Sugiyama
 import networkx as nx
 import matplotlib.pyplot as plt
 # SYS
-logging.getLogger().setLevel(logging.DEBUG)
+logging.getLogger().setLevel(logging.INFO)
 
 ## INPUT
 graph_type = 'DiGraph'
