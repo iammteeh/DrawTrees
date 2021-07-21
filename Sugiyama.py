@@ -1,27 +1,21 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 import random
-from remove_cycles import remove_selfloops, greedy_cycle_removal, revert_edges
+import remove_cycles
 from assign_levels import longest_path
-from global_sifting import global_sifting
+from global_sifting import GlobalSifting
 
 ## EXPERIMENTAL STATE
 
-def init_sugiyama(G):
-    
-    remove_selfloops(G)
+def Sugiyama(G, distance: int = 1):
+    remove_cycles(G, 'greedy_cycle_removal')
     lvl_dict = longest_path(G)
-    print(lvl_dict)
-
     # init positions
-    x = 0
     for node in G.nodes:
+        x = 0
         nx.set_node_attributes(G, { node: x }, 'x')
         nx.set_node_attributes(G, { node: lvl_dict[node] }, 'y')
-        x += 1 # set to distance finally
-
-
-def run_sugiyama(G):
-    node_order = greedy_cycle_removal(G)
-    revert_edges(G, node_order)
+        x += distance
+    
+    global_sifting = GlobalSifting(G)
+    G = global_sifting.run(10)
     return G
