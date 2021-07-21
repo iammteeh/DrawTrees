@@ -209,7 +209,7 @@ class GlobalSifting:
         if direction == 'in':
             neighbors_direction_a = self.N_minus[upper(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
             logging.debug('neighbors_direction_a = ' + str(neighbors_direction_a))
-            neighbors_direction_b = self.N_minus[upper(self.block_dict[ self.get_block_of_node(b)])] # marked for further improvement
+            neighbors_direction_b = self.N_minus[upper(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
             logging.debug('neighbors_direction_b = ' + str(neighbors_direction_b))
         elif direction == 'out':
             neighbors_direction_a = self.N_plus[lower(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
