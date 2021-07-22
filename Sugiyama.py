@@ -17,5 +17,5 @@ def Sugiyama(G, distance: int = 1):
         x += distance
     
     global_sifting = GlobalSifting(G)
-    G = global_sifting.run(10)
+    G = global_sifting.run(3)
     return G
