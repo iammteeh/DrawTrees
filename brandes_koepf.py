@@ -35,8 +35,8 @@ class Direction(Flag):
 class Layer:
     def __init__(self):
         # Enthält die selben Daten und dienen nur des schnellen Zugriffs jenach Key
-        self.nodes: dict[int, str] = dict()
-        self.positions: dict[str, int] = dict()
+        self.nodes = dict()
+        self.positions = dict()
         self.len = 0
 
     # def move(self, pos: int, item: str) -> None:
@@ -53,17 +53,17 @@ class Layer:
     #     self.positions[item] = pos
     #     self.nodes[pos] = item
 
-    def append(self, item: str):
+    def append(self, item):
         self.len += 1
         self.nodes[self.len] = item
         self.positions[item] = self.len
 
         return self.len
 
-    def pos(self, item: str) -> int:
+    def pos(self, item):
         return self.positions[item]
 
-    def predecessor(self, item: str) -> str:
+    def predecessor(self, item):
         if (pos := self.positions[item]) > 1:
             return self.nodes[pos - 1]
         raise ValueError('Für das erste Element gibt es keinen Vorfolger')
@@ -83,14 +83,14 @@ class Layer:
             self.nodes[i + 1] = node
             self.positions[node] = i + 1
 
-    def __len__(self) -> int:
+    def __len__(self):
         return self.len
 
-    def __getitem__(self, item: int) -> str:
+    def __getitem__(self, item):
         # FIX: Brainfuck 2.0
         return self.nodes[item]
 
-    def __setitem__(self, key: str, value: str) -> None:
+    def __setitem__(self, key, value):
         # FIX: Brainfuck
         if key in self.positions:
             index = self.positions[key]
@@ -103,27 +103,27 @@ class Layer:
 
 class Layout:
     def __init__(self):
-        self.layer: defaultdict[int, Layer] = defaultdict(Layer)
-        self.index: dict[Layer, int] = dict()
-        self.node_to_layer: dict[str, int] = dict()
+        self.layer = defaultdict(Layer)
+        self.index = dict()
+        self.node_to_layer = dict()
 
-        self.marked_segments: defaultdict[tuple[str, str], bool] = defaultdict(lambda: False)
+        self.marked_segments = defaultdict(lambda: False)
 
-        self.root: dict[str, str] = dict()
-        self.align: dict[str, str] = dict()
-        self.sink: dict[str, str] = dict()
-        self.shift: dict[str, float] = dict()
-        self.x: [str, Optional[int]] = defaultdict(lambda: None)
+        self.root = dict()
+        self.align = dict()
+        self.sink = dict()
+        self.shift = dict()
+        self.x = defaultdict(lambda: None)
 
-    def add_node(self, layer: int, node: str):
+    def add_node(self, layer, node):
         self.layer[layer].append(node)
         self.index[self.layer[layer]] = layer
         self.node_to_layer[node] = layer
 
-    def mark_segement(self, edge: tuple[str, str]):
+    def mark_segement(self, edge):
         self.marked_segments[edge] = True
 
-    def is_marked(self, edge: tuple[str, str]):
+    def is_marked(self, edge):
         return self.marked_segments[edge]
 
     def normalize_and_sort(self, G):
@@ -145,10 +145,10 @@ class Layout:
         for key in self.node_to_layer:
             self.node_to_layer[key] -= min_layer
 
-    def pos(self, node: str):
+    def pos(self, node):
         return self.layer[self.node_to_layer[node]].pos(node)
 
-    def get_layer(self, node: str):
+    def get_layer(self, node):
         return self.layer[self.node_to_layer[node]]
 
     def L(self, i):
@@ -157,11 +157,11 @@ class Layout:
     def __len__(self):
         return len(self.layer)
 
-    def __getitem__(self, item: int):
+    def __getitem__(self, item):
         return self.layer[item]
 
 
-def list_upper_neighbors(G, layers: Layout, i: int, k: int, direction: Direction):
+def list_upper_neighbors(G, layers, i, k, direction):
     if direction.DOWN in direction:
         return sorted([u for u, v in G.in_edges(layers[i].node_by_index(k))],
                       key=lambda n: layers.pos(n))
@@ -170,7 +170,7 @@ def list_upper_neighbors(G, layers: Layout, i: int, k: int, direction: Direction
                       key=lambda n: layers.pos(n))
 
 
-def algo_1(G, layers: Layout) -> Layout:
+def algo_1(G, layers):
     # ----Algo. 1.------------------------
     for i in range(2, len(layers) - 1):
         k0 = 0
@@ -194,7 +194,7 @@ def algo_1(G, layers: Layout) -> Layout:
     return layers
 
 
-def algo_2(G, layout: Layout, direction: Direction) -> Layout:
+def algo_2(G, layout: Layout, direction):
     ver_range = range(1, len(layout) + 1)
 
     if Direction.UP in direction:
@@ -233,9 +233,9 @@ def algo_2(G, layout: Layout, direction: Direction) -> Layout:
     return layout
 
 
-def algo_3(G, layout: Layout, delta: float, direction: Direction) -> Layout:
+def algo_3(G, layout, delta, direction):
     # ----Algo. 3.------------------------
-    def place_block(v: str):
+    def place_block(v):
         if layout.x[v] is None:
             layout.x[v] = 0
             w = v
