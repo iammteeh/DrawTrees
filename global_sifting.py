@@ -62,7 +62,7 @@ class GlobalSifting:
         
         for node in self.G.nodes(data='pi'):
             logging.warning('node: ' + str(node) + ' pi: ' + str(node[1]))
-            nx.set_node_attributes(self.G, { node: node[1] }, 'x')
+            nx.set_node_attributes(self.G, { node[0]: node[1] }, 'x')
             logging.warning('x_attributes: ' + str(nx.get_node_attributes(self.G, 'x')))
         return self.G
 
