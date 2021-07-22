@@ -13,20 +13,20 @@ input_format = 'graphml'
 #string = '((C)A,(D)B)F;' # for newick trees
 #file = 'phyliptree.nh' # newick tree data
 filepath = './data/Software-Engineering/'
-#graphlist = [ 'JFtp.graphml', 'JUnit-4.12.graphml', 'Stripes-1.5.7.graphml', 'Checkstyle-6.5.graphml' ] # GraphML MultiGraph data
-graphlist = [' complete7 ']
+graphlist = [ 'JFtp.graphml', 'JUnit-4.12.graphml', 'Stripes-1.5.7.graphml', 'Checkstyle-6.5.graphml' ] # GraphML MultiGraph data
+#graphlist = [' complete7 ']
 multigraph_key = 'method-call' # Edge Key
 
 ## some nx graphs
 # G = nx.gn_graph(5) # a tree
 # G = nx.scale_free_graph(50)        
-g = nx.complete_graph(7)
-g = nx.to_directed(g)
-G = nx.DiGraph()
-for node in g.nodes:
-    G.add_node(node)
-for edge in g.edges:
-    G.add_edge(edge[0],edge[1])    
+#g = nx.complete_graph(7)
+#g = nx.to_directed(g)
+#G = nx.DiGraph()
+#for node in g.nodes:
+#    G.add_node(node)
+#for edge in g.edges:
+#    G.add_edge(edge[0],edge[1])    
 ## 
 
 # CUSTOM
@@ -66,14 +66,14 @@ def main():
         logging.getLogger('./output/' + filename).setLevel(logging.WARNING)
         path_to_file = filepath + filename
         savefile = './output/' + filename + '.png'
-        g = nx.complete_graph(7)
-        g = nx.to_directed(g)
-        G = nx.DiGraph()
-        for node in g.nodes:
-            G.add_node(node)
-        for edge in g.edges:
-            G.add_edge(edge[0],edge[1])
-        #G = parse_input(input_format, path_to_file, multigraph_key)
+        #g = nx.complete_graph(7)
+        #g = nx.to_directed(g)
+        #G = nx.DiGraph()
+        #for node in g.nodes:
+        #    G.add_node(node)
+        #for edge in g.edges:
+        #    G.add_edge(edge[0],edge[1])
+        G = parse_input(input_format, path_to_file, multigraph_key)
         pos = assign_layout(G, graph_type)
         
         # plotting
