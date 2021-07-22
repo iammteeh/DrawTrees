@@ -51,12 +51,9 @@ def assign_layout(G, graph_type):
     elif graph_type == 'DiGraph':
         G = Sugiyama(G)
         x_attributes = nx.get_node_attributes(G, 'x')
-        logging.warning(x_attributes)
         y_attributes = nx.get_node_attributes(G, 'y')
-        logging.warning(y_attributes)
         pos_dict = dict()
         for node in G.nodes:
-            logging.warning('set pos=' + str((x_attributes[node] * 10, y_attributes[node] * 5)) + ' to node ' + str(node))
             pos_dict[node] = (x_attributes[node] * 10, y_attributes[node] * 5)
         return pos_dict
 
