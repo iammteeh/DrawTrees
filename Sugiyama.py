@@ -18,6 +18,6 @@ def Sugiyama(G, distance: int = 1):
         x += distance
     
     global_sifting = GlobalSifting(G)
-    G = global_sifting.run(3)
+    G = global_sifting.run(1)
     G = _brand_koepf(G, 1)
     return G
