@@ -51,12 +51,12 @@ def assign_layout(G, graph_type):
     elif graph_type == 'DiGraph':
         G = Sugiyama(G)
         x_attributes = nx.get_node_attributes(G, 'x')
-        logging.debug(x_attributes)
+        logging.warning(x_attributes)
         y_attributes = nx.get_node_attributes(G, 'y')
-        logging.debug(y_attributes)
+        logging.warning(y_attributes)
         pos_dict = dict()
         for node in G.nodes:
-            logging.debug('set pos=' + str(pos_dict[node]) + 'to node ' + str(node))
+            logging.warning('set pos=' + str(pos_dict[node]) + 'to node ' + str(node))
             pos_dict[node] = (x_attributes[node] * 10, y_attributes[node] * 5)
         return pos_dict
 
@@ -65,7 +65,7 @@ def assign_layout(G, graph_type):
 def main():
     for filename in graphlist:
         logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-        logging.getLogger('./output/' + filename).setLevel(logging.DEBUG)
+        logging.getLogger('./output/' + filename).setLevel(logging.WARNING)
         path_to_file = filepath + filename
         savefile = './output/' + filename
         G = parse_input(input_format, path_to_file, multigraph_key)
