@@ -56,7 +56,7 @@ def assign_layout(G, graph_type):
         logging.warning(y_attributes)
         pos_dict = dict()
         for node in G.nodes:
-            logging.warning('set pos=' + str(pos_dict[node]) + 'to node ' + str(node))
+            logging.warning('set pos=' + str((x_attributes[node] * 10, y_attributes[node] * 5)) + ' to node ' + str(node))
             pos_dict[node] = (x_attributes[node] * 10, y_attributes[node] * 5)
         return pos_dict
 
