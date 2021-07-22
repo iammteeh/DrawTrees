@@ -71,7 +71,7 @@ def main():
         logging.Formatter('%(asctime)s %(levelname)s %(message)s')
         logging.getLogger('./output/' + filename).setLevel(logging.WARNING)
         path_to_file = filepath + filename
-        savefile = './output/' + filename
+        savefile = './output/' + filename + '.png'
         #G = parse_input(input_format, path_to_file, multigraph_key)
         pos = assign_layout(G, graph_type)
         
