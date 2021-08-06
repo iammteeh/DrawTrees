@@ -3,7 +3,7 @@ import random
 from remove_cycles import remove_cycles
 from assign_levels import longest_path
 from global_sifting import GlobalSifting
-from brandes_koepf import _brand_koepf
+#from brandes_koepf import _brand_koepf
 
 ## EXPERIMENTAL STATE
 
