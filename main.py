@@ -6,7 +6,7 @@ from Sugiyama import Sugiyama
 import networkx as nx
 import matplotlib.pyplot as plt
 # SYS
-logging_format = '%(asctime)s %(msecs)d - %(name)s %(levelname)s - %(message)s'
+logging_format = logging.Formatter('%(asctime)s %(msecs)d - %(name)s %(levelname)s - %(message)s')
 ## INPUT
 graph_type = 'DiGraph'
 input_format = 'graphml'
