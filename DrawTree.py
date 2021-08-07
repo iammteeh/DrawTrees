@@ -4,9 +4,9 @@ import newick
 from ete3 import Tree
 import matplotlib.pyplot as plt
 import networkx as nx
-from main import setup_logger
+import logging
 
-logger = setup_logger()
+logger = logging.getLogger('draw ' + str(input_format) + ' ' + str(graph_type))
 
 ## parse with newick
 def newick(file):

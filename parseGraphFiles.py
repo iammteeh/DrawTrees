@@ -1,7 +1,9 @@
 import newick
 from ete3 import Tree
 import networkx as nx
+import logging
 
+logger = logging.getLogger('draw graphs')
 #def newick_to_nx(file):
 #    newick.read(file)
 

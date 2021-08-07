@@ -1,7 +1,7 @@
 import networkx as nx
-from main import setup_logger
+import logging
 
-logger = setup_logger()
+logger = logging.getLogger('draw graphs')
 
 def longest_path(g):
     m = g.__len__()

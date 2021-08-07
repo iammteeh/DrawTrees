@@ -1,8 +1,8 @@
 import copy, random
 import networkx as nx
-from main import setup_logger
+import logging
 
-logger = setup_logger()
+logger = logging.getLogger('draw graphs')
 
 def create_ordered_block_list(G):
     block_dict = blockify_graph(G)

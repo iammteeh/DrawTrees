@@ -31,10 +31,6 @@ scale_y = 30 # figure size y
 node_color = str()
 edge_color = str()
 
-def setup_logger():
-    logger = logging.getLogger('draw ' + str(input_format) + ' ' + str(graph_type))
-    return logger
-
 def parse_input(input_format, path_to_file, *args):
     if input_format == 'graphml':
         G = GraphML(path_to_file).to_graph(multigraph_key)
@@ -64,7 +60,7 @@ def assign_layout(G, graph_type):
 
 def main():
     # set logging
-    logger = setup_logger()
+    logger = logging.getLogger('draw graphs')
     streamhandler = logging.StreamHandler()
     streamhandler.setLevel(logging.WARNING)
     streamhandler.setFormatter(logging_format)

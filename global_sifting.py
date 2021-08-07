@@ -3,9 +3,9 @@ import random
 import copy
 from blockify_graph import create_ordered_block_list , blockify_graph, upper, lower, get_neighbors_of_node, get_neighbors_of_block, levels
 from typing import Dict, List
-from main import setup_logger
+import logging
 
-logger = setup_logger()
+logger = logging.getLogger('draw graphs')
 
 def assign_pi_to_node(self):
     for block in self.block_list:
