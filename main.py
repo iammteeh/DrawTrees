@@ -20,14 +20,6 @@ multigraph_key = 'method-call' # Edge Key
 ## some nx graphs
 # G = nx.gn_graph(5) # a tree
 # G = nx.scale_free_graph(50)        
-#g = nx.complete_graph(7)
-#g = nx.to_directed(g)
-#G = nx.DiGraph()
-#for node in g.nodes:
-#    G.add_node(node)
-#for edge in g.edges:
-#    G.add_edge(edge[0],edge[1])    
-## 
 
 # CUSTOM
 show_graph = False
@@ -67,8 +59,6 @@ def assign_layout(G, graph_type):
             pos_dict[node] = (x_attributes[node] * 10, y_attributes[node] * 5)
         return pos_dict
 
-
-
 def main():
     # set logging
     logging.basicConfig(filemode='a',
@@ -76,8 +66,9 @@ def main():
                         datefmt='%H:%M:%S',
                         level=logging.DEBUG)
 
-    logger = logging.getLogger('draw' + str(input_format) + ' ' + str(graph_type))
-
+    logger = logging.getLogger('draw ' + str(input_format) + ' ' + str(graph_type))
+    logger.handlers[0].close() # close existing handlers
+    logger.handlers = []    # and start with an empty list of handlers
 
     for filename in graphlist:
 
