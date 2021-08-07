@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding="UTF-8"?>
-<graphml>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:my="myFunctions">
 <key id="inheritance" for="edge" attr.name="inheritance" attr.type="double"/>
 <key id="implementation" for="edge" attr.name="implementation" attr.type="double"/>
 <key id="aggregation" for="edge" attr.name="aggregation" attr.type="double"/>
