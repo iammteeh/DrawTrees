@@ -68,10 +68,12 @@ def main():
     logger.addHandler(streamhandler)
 
     for filename in graphlist:
+        # add logging handler to output logging in separate file
         filehandler = logging.FileHandler('./output/' + filename + '.log', mode='w')
         filehandler.setLevel(logging.DEBUG)
         filehandler.setFormatter(logging_format)
         logger.addHandler(filehandler)
+        
         path_to_file = filepath + filename
         savefile = './output/' + filename + '.png'
 
@@ -81,12 +83,14 @@ def main():
         # plotting
         plt.figure(1, figsize=(scale_x, scale_y))
         nx.draw(G, pos=pos)
-        #plt.gca().invert_yaxis()
         plt.savefig(savefile, format='png', dpi=60)
         print("Figure saved in", savefile)
         if show_graph:
             plt.show()
         plt.clf()
+
+        # remove handler 
+        logger.removeHandler(filehandler)
 
 if __name__ == '__main__':
     main()
