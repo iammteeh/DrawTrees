@@ -61,21 +61,18 @@ def assign_layout(G, graph_type):
 
 def main():
     # set logging
-    logging.basicConfig(filemode='a',
-                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                        datefmt='%H:%M:%S',
-                        level=logging.DEBUG)
-
+    logging_format = '%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s'
     logger = logging.getLogger('draw ' + str(input_format) + ' ' + str(graph_type))
-    try:
-        logger.handlers[0].close() # close existing handlers
-    except:
-        pass
-    logger.handlers = []    # and start with an empty list of handlers
+
+    streamhandler = logging.StreamHandler()
+    streamhandler.setLevel(logging.WARNING)
+    streamhandler.setFormatter(logging_format)
+    logger.addHandler(streamhandler)
 
     for filename in graphlist:
-
-        filehandler = logging.FileHandler('./output/' + filename + '.log')
+        filehandler = logging.FileHandler('./output/' + filename + '.log', mode='w')
+        filehandler.setLevel(logger.debug)
+        filehandler.setFormatter(logging_format)
         logger.addHandler(filehandler)
         path_to_file = filepath + filename
         savefile = './output/' + filename + '.png'

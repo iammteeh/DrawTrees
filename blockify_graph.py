@@ -27,54 +27,54 @@ def add_dummy_vertices(G):
     node_levels = nx.get_node_attributes(G, 'level')
     edges = copy.deepcopy(G.edges)
     debug_counter = 0
-    logging.debug('edges: ' + str(edges))
+    logger.debug('edges: ' + str(edges))
     for edge in edges: # make copy of edges to ensure dict keys don't change in interation
         debug_counter += 1
-        logging.debug('counter: ' + str(debug_counter))
+        logger.debug('counter: ' + str(debug_counter))
         node_level_edge_out = node_levels[edge[0]]
         node_level_edge_in = node_levels[edge[1]]
         span = node_level_edge_in - node_level_edge_out
-        logging.debug('span between ' + str(edge[0]) + ' and ' + str(edge[1]) + ' is ' + str(span))
+        logger.debug('span between ' + str(edge[0]) + ' and ' + str(edge[1]) + ' is ' + str(span))
         dummy_counter = 1
         block_list = []
         while span > 1:
-            logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
+            logger.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
             
             if dummy_counter == 1 and span == 2:
-                logging.debug('case dc==1 s==2')
+                logger.debug('case dc==1 s==2')
                 dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
                 G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, y=node_level_edge_out+dummy_counter)
                 G.add_edge(edge[0],dummy_node_name)
                 G.add_edge(dummy_node_name,edge[1])
-                logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
+                logger.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
             
             elif dummy_counter == 1 and span > 2:
-                logging.debug('case dc==1 s>2')
+                logger.debug('case dc==1 s>2')
                 dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
                 G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, y=node_level_edge_out+dummy_counter)
                 G.add_edge(edge[0],dummy_node_name)
-                logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
+                logger.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
             
             elif dummy_counter > 1 and span > 2:
-                logging.debug('case dc>1 s>2')
+                logger.debug('case dc>1 s>2')
                 dummy_node_predecessor_name = block_list[dummy_counter-2] 
                 dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
                 G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, y=node_level_edge_out+dummy_counter)
                 G.add_edge(dummy_node_predecessor_name,dummy_node_name)
-                logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
+                logger.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
 
             elif dummy_counter > 1 and span == 2:
-                logging.debug('case dc>1 s==2')
+                logger.debug('case dc>1 s==2')
                 dummy_node_predecessor_name = block_list[dummy_counter-2] 
                 dummy_node_name = 'd' + str(dummy_counter) + '_' + str(edge[0]) + 'B' + str(edge[1])
                 block_list.append(dummy_node_name)
                 G.add_node(dummy_node_name, is_dummy=True, level=node_level_edge_out+dummy_counter, y=node_level_edge_out+dummy_counter)
                 G.add_edge(dummy_node_predecessor_name,dummy_node_name)
                 G.add_edge(dummy_node_name,edge[1])
-                logging.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
+                logger.debug('block_list: ' + str(block_list) + ' dummy_counter: ' + str(dummy_counter) + ' span: ' + str(span))
 
             else:
                 raise Exception('Not all cases covered!')
@@ -121,9 +121,9 @@ def get_nodes_by_block_id(G, block_id):
 def generate_block_dict(G):
     block_dict = {}
     block_list = get_blocks(G)
-    logging.debug('block_list: ' + str(block_list))
+    logger.debug('block_list: ' + str(block_list))
     for block in block_list:
-        #logging.debug('add node_list' + str(get_nodes_by_block_id(G, block)) + 'to block' + str(block))
+        #logger.debug('add node_list' + str(get_nodes_by_block_id(G, block)) + 'to block' + str(block))
         block_dict[block] = get_nodes_by_block_id(G, block)
     return block_dict
 
@@ -164,11 +164,11 @@ def get_neighbors_of_block(G, block_dict, block, direction):
 def get_indices_of_block(G, block, direction):
     if direction == 'in':
         i_minus_of_block = []
-        logging.debug('lookup for block: ' + str(block))
+        logger.debug('lookup for block: ' + str(block))
         for neighbor in get_neighbors_of_block(G, block, 'in'):
-            logging.debug('neighbor: ' + str(neighbor))
+            logger.debug('neighbor: ' + str(neighbor))
             neighbors_neighbors = get_neighbors_of_block(G, get_block_of_node(G, neighbor), 'out')
-            logging.debug('neighbors_neighbors: ' + str(neighbors_neighbors))
+            logger.debug('neighbors_neighbors: ' + str(neighbors_neighbors))
             i_minus_of_block.append(neighbors_neighbors.index(block))
         return i_minus_of_block
 

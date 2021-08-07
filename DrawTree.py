@@ -38,7 +38,7 @@ def get_lvl(node):
     return lvl
 
 def induce_order(tree):
-    logging.info('inducing order')
+    logger.info('inducing order')
     i = 0 # maybe set to 1 initially
     for node in tree.traverse():
         # set depth and index
@@ -53,21 +53,21 @@ def induce_order(tree):
         # set features for buchheim
         node.add_features(mod=0, thread=0, shift=0, change=0, prelim_x=0)
         i += 1
-    logging.info('successfully induced order')
+    logger.info('successfully induced order')
 
 ## buchheim       
 def left_sibling(node):
-    logging.info('get left sibling for ' + str(node.idx))
+    logger.info('get left sibling for ' + str(node.idx))
     left_sibling = False
     if node.up:
         for child in node.up.children:
             if child == node : 
-                logging.info('left sibling of ' + str(node.idx) + ' is: ' + str(left_sibling.idx if left_sibling!=False else False))
+                logger.info('left sibling of ' + str(node.idx) + ' is: ' + str(left_sibling.idx if left_sibling!=False else False))
                 return left_sibling
             else: 
                 left_sibling = child
     
-    logging.info('left sibling of ' + str(node.idx) + ' is: ' + str(child.idx if left_sibling!=False else False))
+    logger.info('left sibling of ' + str(node.idx) + ' is: ' + str(child.idx if left_sibling!=False else False))
     return left_sibling
 
 def next_left(node):
@@ -140,23 +140,23 @@ def apportion(node,default_ancestor):
     return default_ancestor
         
 def first_walk(node):
-    logging.info('start first walk for ' + str(node.idx))
+    logger.info('start first walk for ' + str(node.idx))
     if node.is_leaf():
-        logging.info('reached leaf')
+        logger.info('reached leaf')
         if node.up.children[0] != node:
             node.prelim_x = left_sibling(node).prelim_x + distance
         else:
             node.prelim_x = 0
-        logging.info('set prelim_x for ' + str(node.idx))
+        logger.info('set prelim_x for ' + str(node.idx))
     else:
         default_ancestor = node.children[0] # left most child
-        logging.info('set default ancestor ' + str(default_ancestor.idx))
+        logger.info('set default ancestor ' + str(default_ancestor.idx))
         for child in node.children:
-            logging.info('start first walk for ' + str(child.idx))
+            logger.info('start first walk for ' + str(child.idx))
             first_walk(child)
-            logging.info('start apportion for ' + str(child.idx) + ' with default ancestor ' + str(default_ancestor.idx))
+            logger.info('start apportion for ' + str(child.idx) + ' with default ancestor ' + str(default_ancestor.idx))
             apportion(child,default_ancestor)
-        logging.info('execute shifts for node ' + str(node.idx))
+        logger.info('execute shifts for node ' + str(node.idx))
         execute_shifts(node)
         midpoint = 1/2*(node.children[0].prelim_x + node.children[len(node.get_children())-1].prelim_x)
         if left_sibling(node) != False:
@@ -166,28 +166,28 @@ def first_walk(node):
             node.prelim_x = midpoint
 
 def second_walk(node,m):
-    logging.info('write final coordinates for node ' + str(node.idx))
+    logger.info('write final coordinates for node ' + str(node.idx))
     node.add_features(x=node.prelim_x + m, y=node.depth)
     for child in node.children:
-        logging.info('second walk for ' + str(child.idx))
+        logger.info('second walk for ' + str(child.idx))
         second_walk(child,m + node.mod)
         
 def buchheim(tree):
-    logging.info('start buchheim walk')
+    logger.info('start buchheim walk')
     induce_order(tree)
     root = tree.get_tree_root()
-    logging.info('set root=' + str(root.idx))
-    logging.info('start first walk for root ' + str(root.idx))
+    logger.info('set root=' + str(root.idx))
+    logger.info('start first walk for root ' + str(root.idx))
     first_walk(root)
-    logging.info('start second walk for root ' + str(root.idx))
+    logger.info('start second walk for root ' + str(root.idx))
     second_walk(root,-root.prelim_x)
     #return tree
-    logging.info('finished')
+    logger.info('finished')
             
 # create nx graph
 def DrawTree(tree):
     buchheim(tree)
-    logging.info('start drawing')
+    logger.info('start drawing')
     Tree = nx.DiGraph()
     for node in tree.traverse():
         Tree.add_node(node.idx,pos=(node.x,-node.y))
@@ -198,7 +198,7 @@ def DrawTree(tree):
 
 def DrawTreeWithNames(tree):
     buchheim(tree)
-    logging.info('start drawing')
+    logger.info('start drawing')
     Tree = nx.DiGraph()
     for node in tree.traverse():
         v = node.name if node.name else node.idx
@@ -211,7 +211,7 @@ def DrawTreeWithNames(tree):
 
 def assign_tree_layout(tree):
     buchheim(tree)
-    logging.info('start drawing')
+    logger.info('start drawing')
     Tree = nx.DiGraph()
     for node in tree.traverse():
         v = node.name if node.name else node.idx

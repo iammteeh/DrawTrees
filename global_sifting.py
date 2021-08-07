@@ -53,11 +53,11 @@ class GlobalSifting:
 
     def run(self, sifting_rounds: int=10):
         for p in range(sifting_rounds):
-            logging.info('sifting round: ' + str(p))
+            logger.info('sifting round: ' + str(p))
             for block in copy.deepcopy(self.block_list): # DEBUG LOOP
                 self.block_list = self.sifting_step(self.block_list, block)
         for node in self.G.nodes:
-            logging.info('update pi of node: ' + str(node))
+            logger.info('update pi of node: ' + str(node))
             self.set_pi_of_node(node, self.get_pi_of_block(self.get_block_of_node(node)))
         
         for node in self.G.nodes(data='pi'):
@@ -65,7 +65,7 @@ class GlobalSifting:
         return self.G
 
     def sifting_step(self, block_list, block):
-        logging.info('sifting step for block: ' + str(block))
+        logger.info('sifting step for block: ' + str(block))
         self.block_list.remove(block)
         self.block_list.insert(0, block)
         self.sort_adjacencies(block_list)
@@ -79,7 +79,7 @@ class GlobalSifting:
                 p_star = p
     
         # move block "A" to position of block on position p_star
-        logging.info('move block A: ' + str(block))
+        logger.info('move block A: ' + str(block))
         cache_block = self.block_list.index(block)
         index_block_p_star = self.block_list.index(self.block_list[p_star])
         block_list.remove(block)
@@ -88,9 +88,9 @@ class GlobalSifting:
         return block_list
 
     def sort_adjacencies(self, block_list):
-        logging.info('sort adjacencies')
-        logging.debug('block_list: ' + str(block_list))
-        logging.debug('block_dict: ' + str(self.block_dict))
+        logger.info('sort adjacencies')
+        logger.debug('block_list: ' + str(block_list))
+        logger.debug('block_dict: ' + str(self.block_dict))
         # for reference
         #N_minus: Dict[any,List] = dict()
         #I_minus: Dict[any,List] = dict()
@@ -102,7 +102,7 @@ class GlobalSifting:
 
         # init dict values
         for block in block_list:
-            logging.debug('length block_list:' + str(len(block_list)))
+            logger.debug('length block_list:' + str(len(block_list)))
             upper_nodes = []
             lower_nodes = []
             upper_nodes.append(upper(self.block_dict[block]))
@@ -127,21 +127,21 @@ class GlobalSifting:
                 self.I_plus[w] = list() # marked for further improvement
         
         for block in block_list: #
-            logging.debug('block: ' + str(block))
+            logger.debug('block: ' + str(block))
             for edge in self.G.in_edges(upper(self.block_dict[block])): # for s € {(u,v) € E | v = upper(A)}
                 # init variables
                 u, v = edge
-                logging.debug('u=' + str(u) + ', v=' + str(v))
+                logger.debug('u=' + str(u) + ', v=' + str(v))
                 s = edge
                 j = len(self.N_plus[u]) # marked for further improvement
                 # execute insertion logic
-                logging.debug('append N_plus[u]=' + str(self.N_plus[u]) + ' with v=' + str(v))
+                logger.debug('append N_plus[u]=' + str(self.N_plus[u]) + ' with v=' + str(v))
                 self.N_plus[u].append(v)
-                logging.debug('N_plus[u] is now: ' + str(self.N_plus[u]))
+                logger.debug('N_plus[u] is now: ' + str(self.N_plus[u]))
                 pi_block = self.get_pi_of_block(block)
                 pi_block_u = self.get_pi_of_block(self.get_block_of_node(u))
                 if pi_block < pi_block_u:
-                    logging.debug('pi_block < pi_block_u: ' + str(pi_block) + ' < ' + str(pi_block_u))
+                    logger.debug('pi_block < pi_block_u: ' + str(pi_block) + ' < ' + str(pi_block_u))
                     p[s] = j
                 else:
                     self.I_plus[u].insert(j, p[s]) # marked for further improvement
@@ -162,11 +162,11 @@ class GlobalSifting:
                     self.I_minus[x].insert(j, p[s]) # marked for further improvement
                     self.I_plus[w].insert(p[s], j) # marked for further improvement
         
-        logging.debug('length N_minus' + str(len(self.N_minus.keys())))
-        logging.debug('length N_plus' + str(len(self.N_plus.keys())))
+        logger.debug('length N_minus' + str(len(self.N_minus.keys())))
+        logger.debug('length N_plus' + str(len(self.N_plus.keys())))
         
     def sifting_swap(self, A, B):
-        logging.info('sifting swap for block A=' + str(A) + ' and Block B=' + str(B))
+        logger.info('sifting swap for block A=' + str(A) + ' and Block B=' + str(B))
         L = set()
         Delta = 0
         y_attributes = nx.get_node_attributes(self.G, 'y')
@@ -216,23 +216,23 @@ class GlobalSifting:
         return Delta
 
     def uswap(self, a, b, direction):
-        logging.info('uswap for nodes ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
-        logging.debug('length block_list:' + str(len(self.block_list)))
-        logging.debug('length N_minus' + str(len(self.N_minus.keys())))
-        logging.debug('length N_plus' + str(len(self.N_plus.keys())))
+        logger.info('uswap for nodes ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
+        logger.debug('length block_list:' + str(len(self.block_list)))
+        logger.debug('length N_minus' + str(len(self.N_minus.keys())))
+        logger.debug('length N_plus' + str(len(self.N_plus.keys())))
         c = 0
         i = 0
         j = 0
         if direction == 'in':
             neighbors_direction_a = self.N_minus[upper(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
-            logging.debug('neighbors_direction_a = ' + str(neighbors_direction_a))
+            logger.debug('neighbors_direction_a = ' + str(neighbors_direction_a))
             neighbors_direction_b = self.N_minus[upper(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
-            logging.debug('neighbors_direction_b = ' + str(neighbors_direction_b))
+            logger.debug('neighbors_direction_b = ' + str(neighbors_direction_b))
         elif direction == 'out':
             neighbors_direction_a = self.N_plus[lower(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
-            logging.debug('neighbors_direction_a = ' + str(neighbors_direction_a))
+            logger.debug('neighbors_direction_a = ' + str(neighbors_direction_a))
             neighbors_direction_b = self.N_plus[lower(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
-            logging.debug('neighbors_direction_b = ' + str(neighbors_direction_b))
+            logger.debug('neighbors_direction_b = ' + str(neighbors_direction_b))
         else:
             raise Exception('No valid direction given.')
 
@@ -253,15 +253,15 @@ class GlobalSifting:
         return c
     
     def update_adjacencies(self, a, b, direction):
-        logging.info('update adjacencies for node ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
+        logger.info('update adjacencies for node ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
         i = 0
         j = 0
         z = int()
         if direction == 'in':
             A = upper(self.block_dict[self.get_block_of_node(a)])
             B = upper(self.block_dict[self.get_block_of_node(b)])
-            logging.debug('A: ' + str(A))
-            logging.debug('B: ' + str(B))
+            logger.debug('A: ' + str(A))
+            logger.debug('B: ' + str(B))
             neighbors_direction_a = self.N_minus[upper(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
             indices_direction_a = self.I_minus[upper(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
             neighbors_direction_b = self.N_minus[upper(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
@@ -269,8 +269,8 @@ class GlobalSifting:
         elif direction == 'out':
             A = lower(self.block_dict[self.get_block_of_node(a)])
             B = lower(self.block_dict[self.get_block_of_node(b)])
-            logging.debug('A: ' + str(A))
-            logging.debug('B: ' + str(B))
+            logger.debug('A: ' + str(A))
+            logger.debug('B: ' + str(B))
             neighbors_direction_a = self.N_plus[lower(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
             indices_direction_a = self.I_plus[lower(self.block_dict[self.get_block_of_node(a)])] # marked for further improvement
             neighbors_direction_b = self.N_plus[lower(self.block_dict[self.get_block_of_node(b)])] # marked for further improvement
@@ -299,8 +299,8 @@ class GlobalSifting:
                     raise Exception('No valid direction given.')
 
                 # swap entries at positions Id(a)[i]and Id(b)[j]in N−d(z)and in I−d(z)
-                #logging.debug(str(neighbors_opposite_z) +'length N[z]:' + str(len(neighbors_opposite_z)))
-                #logging.debug('length indices_opposite_z: ' + str(len(indices_opposite_z)))
+                #logger.debug(str(neighbors_opposite_z) +'length N[z]:' + str(len(neighbors_opposite_z)))
+                #logger.debug('length indices_opposite_z: ' + str(len(indices_opposite_z)))
 
                 #swap_neighbors = neighbors_opposite_z[indices_direction_a[i]]
                 #swap_indices = indices_opposite_z[indices_direction_a[i]]
@@ -316,12 +316,12 @@ class GlobalSifting:
                 #i += 1
                 #j += 1
                 
-                logging.debug(str(neighbors_opposite_z) +'length N[z]:' + str(len(neighbors_opposite_z)))
+                logger.debug(str(neighbors_opposite_z) +'length N[z]:' + str(len(neighbors_opposite_z)))
                 pos_a_z = neighbors_opposite_z.index(A)
-                logging.debug('pos_a_z: ' + str(pos_a_z))
+                logger.debug('pos_a_z: ' + str(pos_a_z))
                 pos_b_z = neighbors_opposite_z.index(B)
-                logging.debug('pos_b_z: ' + str(pos_b_z))
-                logging.debug('length indices_opposite_z: ' + str(len(indices_opposite_z)))
+                logger.debug('pos_b_z: ' + str(pos_b_z))
+                logger.debug('length indices_opposite_z: ' + str(len(indices_opposite_z)))
 
                 if pos_a_z < pos_b_z:
                     neighbors_opposite_z.pop(pos_a_z)

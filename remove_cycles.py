@@ -49,12 +49,12 @@ def greedy_cycle_removal(DiGraph):
 ## helper functions 
 def remove_successor_edges(node, DiGraph):
     for successor in list(DiGraph.successors(node)): # use list() to avoid error of changing dict size during iteration
-        logging.debug('remove edge ' + str(node) + ' ' + str(successor))
+        logger.debug('remove edge ' + str(node) + ' ' + str(successor))
         DiGraph.remove_edge(node,successor)
         
 def remove_predecessor_edges(node, DiGraph):
     for predecessor in list(DiGraph.predecessors(node)): # use list() to avoid error of changing dict size during iteration
-        logging.debug('remove edge ' + str(predecessor) + ' ' + str(node))
+        logger.debug('remove edge ' + str(predecessor) + ' ' + str(node))
         DiGraph.remove_edge(predecessor,node)
 
 def get_node_with_max_degree_ratio(DiGraph):
