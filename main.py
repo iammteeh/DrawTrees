@@ -60,7 +60,7 @@ def assign_layout(G, graph_type):
 
 def main():
     # set logging
-    logger = logging.getLogger('draw graphs')
+    logger = logging.getLogger('draw graphs').setLevel(logging.DEBUG)
     streamhandler = logging.StreamHandler()
     streamhandler.setLevel(logging.WARNING)
     streamhandler.setFormatter(logging_format)
