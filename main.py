@@ -6,7 +6,7 @@ from Sugiyama import Sugiyama
 import networkx as nx
 import matplotlib.pyplot as plt
 # SYS
-
+logging_format = '%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s'
 ## INPUT
 graph_type = 'DiGraph'
 input_format = 'graphml'
@@ -31,6 +31,9 @@ scale_y = 30 # figure size y
 node_color = str()
 edge_color = str()
 
+def setup_logger():
+    logger = logging.getLogger('draw ' + str(input_format) + ' ' + str(graph_type))
+    return logger
 
 def parse_input(input_format, path_to_file, *args):
     if input_format == 'graphml':
@@ -61,9 +64,7 @@ def assign_layout(G, graph_type):
 
 def main():
     # set logging
-    logging_format = '%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s'
-    logger = logging.getLogger('draw ' + str(input_format) + ' ' + str(graph_type))
-
+    logger = setup_logger()
     streamhandler = logging.StreamHandler()
     streamhandler.setLevel(logging.WARNING)
     streamhandler.setFormatter(logging_format)

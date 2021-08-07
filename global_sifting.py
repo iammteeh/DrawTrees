@@ -1,9 +1,11 @@
 import networkx as nx
 import random
-import logging
 import copy
 from blockify_graph import create_ordered_block_list , blockify_graph, upper, lower, get_neighbors_of_node, get_neighbors_of_block, levels
 from typing import Dict, List
+from main import setup_logger
+
+logger = setup_logger()
 
 def assign_pi_to_node(self):
     for block in self.block_list:

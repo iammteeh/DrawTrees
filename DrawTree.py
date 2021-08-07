@@ -1,10 +1,12 @@
 #from os import listdir, walk
 #from os.path import isfile, join
-import logging
 import newick
 from ete3 import Tree
 import matplotlib.pyplot as plt
 import networkx as nx
+from main import setup_logger
+
+logger = setup_logger()
 
 ## parse with newick
 def newick(file):

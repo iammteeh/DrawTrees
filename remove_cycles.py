@@ -1,6 +1,8 @@
 import networkx as nx
 import copy
-import logging
+from main import setup_logger
+
+logger = setup_logger()
 
 def remove_cycles(DiGraph, method):    
     remove_selfloops(DiGraph)
