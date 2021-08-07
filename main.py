@@ -71,7 +71,7 @@ def main():
 
     for filename in graphlist:
         filehandler = logging.FileHandler('./output/' + filename + '.log', mode='w')
-        filehandler.setLevel(logger.DEBUG)
+        filehandler.setLevel(logging.DEBUG)
         filehandler.setFormatter(logging_format)
         logger.addHandler(filehandler)
         path_to_file = filepath + filename
