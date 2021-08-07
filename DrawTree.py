@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import logging
 
-logger = logging.getLogger('draw ' + str(input_format) + ' ' + str(graph_type))
+logger = logging.getLogger('draw graphs')
 
 ## parse with newick
 def newick(file):
