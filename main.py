@@ -67,7 +67,10 @@ def main():
                         level=logging.DEBUG)
 
     logger = logging.getLogger('draw ' + str(input_format) + ' ' + str(graph_type))
-    logger.handlers[0].close() # close existing handlers
+    try:
+        logger.handlers[0].close() # close existing handlers
+    except:
+        pass
     logger.handlers = []    # and start with an empty list of handlers
 
     for filename in graphlist:
