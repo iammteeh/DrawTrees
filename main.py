@@ -1,41 +1,83 @@
 import os, sys
+from os import listdir
+from os.path import isfile, join
 import logging
+from argparse import ArgumentParser, FileType
+import re
 from GraphML import GraphML
+from ete3 import Tree
 from DrawTree import assign_tree_layout
 from Sugiyama import Sugiyama
 import networkx as nx
 import matplotlib.pyplot as plt
 # SYS
 logging_format = logging.Formatter('%(asctime)s %(msecs)d - %(name)s %(levelname)s - %(message)s')
-## INPUT
-graph_type = 'DiGraph'
-input_format = 'graphml'
-#string = '((C)A,(D)B)F;' # for newick trees
-#file = 'phyliptree.nh' # newick tree data
-filepath = './data/Software-Engineering/'
-graphlist = [ 'JFtp.graphml', 'JUnit-4.12.graphml', 'Stripes-1.5.7.graphml', 'Checkstyle-6.5.graphml' ] # GraphML MultiGraph data
-#graphlist = [' complete7 ']
+## INPUT SETTINGS
+filepath = './data/'
 multigraph_key = 'method-call' # Edge Key
 
-## some nx graphs
-# G = nx.gn_graph(5) # a tree
-# G = nx.scale_free_graph(50)        
+def parse_input():
 
-# CUSTOM
-show_graph = False
-distance = 1
+    # parse arguments to run specified routines
+    parser = ArgumentParser(description='select graphtype, input format, single files to visualize or run test')
+    parser.add_argument('-A', '--all', action='store_true', dest='complete_run')
+    parser.add_argument('-t', '--test', action='store_true', dest='test', default=True)
+    parser.add_argument('-f', '--files', action='store', nargs='+', type=FileType('r'), dest='files')
 
-# OUTPUT
-scale_x = 200 # figure size x
-scale_y = 30 # figure size y
-node_color = str()
-edge_color = str()
+    options = parser.parse_args()
+    graphlist = []
+    
+    if options.complete_run:
+        print('perform complete run')
+        filelist = [file for file in listdir(filepath) if isfile(join(filepath, file))]
+        for file in filelist:
+            if re.match('.*\.graphml', file):
+                graphml = {}
+                graphml['filename'] = file
+                graphml['graph'] = GraphML(filepath + file).to_graph(multigraph_key) # TODO set argument variable for multigraph key and rm perma key 'method-call'
+                graphml['graph_type'] = 'DiGraph'
 
-def parse_input(input_format, path_to_file, *args):
-    if input_format == 'graphml':
-        G = GraphML(path_to_file).to_graph(multigraph_key)
+                graphlist.append(graphml)
 
-    elif input_format == 'test':
+            elif re.match('.*\.nh', file):
+                newick = {}
+                newick['filename'] = file
+                newick['graph'] = Tree(file,format=format)
+                newick['graph_type'] = 'tree'
+
+                graphlist.append(newick)
+            
+            else:
+                raise Exception('File ' + file + ' has no valid format.')
+                pass
+
+        return graphlist
+
+    elif options.files:
+        print('run on' + str(files))
+        for file in options.files:
+            if re.match('.*\.graphml', file):
+                graphml = {}
+                graphml['filename'] = file
+                graphml['graph'] = GraphML(filepath + file).to_graph(multigraph_key) # TODO set argument variable for multigraph key and rm perma key 'method-call'
+                graphml['graph_type'] = 'DiGraph'
+
+                graphlist.append(graphml)
+
+            elif re.match('.*\.nh', file):
+                newick = {}
+                newick['filename'] = file
+                newick['graph'] = Tree(file,format=format)
+                newick['graph_type'] = 'tree'
+
+                graphlist.append(newick)
+        return graphlist
+
+    elif options.test:
+        print('perform test run')
+        ## some nx graphs
+        # G = nx.gn_graph(5) # a tree
+        # G = nx.scale_free_graph(50)   
         g = nx.complete_graph(7)
         g = nx.to_directed(g)
         G = nx.DiGraph()
@@ -43,7 +85,24 @@ def parse_input(input_format, path_to_file, *args):
             G.add_node(node)
         for edge in g.edges:
             G.add_edge(edge[0],edge[1])
-    return G
+
+        testgraph = {}
+        testgraph['filename'] = 'complete7'
+        testgraph['graph'] = G
+        testgraph['graph_type'] = 'CompleteDirected'
+        graphlist.append(testgraph)
+
+        return graphlist
+
+# CUSTOM
+show_graph = False
+distance = 1
+
+# OUTPUT SETTINGS
+scale_x = 200 # figure size x
+scale_y = 30 # figure size y
+node_color = str()
+edge_color = str()
 
 def assign_layout(G, graph_type):
     if graph_type == 'tree':
@@ -67,22 +126,23 @@ def main():
     streamhandler.setFormatter(logging_format)
     logger.addHandler(streamhandler)
 
-    for filename in graphlist:
+    graphlist = parse_input()
+    for graph in graphlist:
+        print('run ' + str(graph))
         # add logging handler to output logging in separate file
-        filehandler = logging.FileHandler('./output/' + filename + '.log', mode='w')
+        filehandler = logging.FileHandler('./output/' + graph['filename'] + '.log', mode='w')
         filehandler.setLevel(logging.DEBUG)
         filehandler.setFormatter(logging_format)
         logger.addHandler(filehandler)
         
-        path_to_file = filepath + filename
-        savefile = './output/' + filename + '.png'
-
-        G = parse_input(input_format, path_to_file, multigraph_key)
-        pos = assign_layout(G, graph_type)
+        path_to_file = filepath + graph['filename']
+        savefile = './output/' + graph['filename'] + '.png'
+        
+        pos = assign_layout(graph['graph'], graph['graph_type'])
         
         # plotting
         plt.figure(1, figsize=(scale_x, scale_y))
-        nx.draw(G, pos=pos)
+        nx.draw(graph['graph'], pos=pos)
         plt.savefig(savefile, format='png', dpi=60)
         print("Figure saved in", savefile)
         if show_graph:
