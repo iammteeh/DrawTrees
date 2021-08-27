@@ -54,8 +54,9 @@ def parse_input():
         return graphlist
 
     elif options.files:
-        print('run on' + str(files))
+        print('run on ' + str(options.files))
         for file in options.files:
+            file = str(file.name)
             if re.match('.*\.graphml', file):
                 graphml = {}
                 graphml['filename'] = file
