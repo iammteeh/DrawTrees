@@ -64,7 +64,8 @@ class Layer:
         return self.positions[item]
 
     def predecessor(self, item):
-        if (pos := self.positions[item]) > 1:
+        pos = self.positions[item]
+        if pos > 1:
             return self.nodes[pos - 1]
         raise ValueError('Für das erste Element gibt es keinen Vorfolger')
 
@@ -211,7 +212,8 @@ def algo_2(G, layout: Layout, direction):
             sign = -1
 
         for k in hoz_range:
-            if upper_neighbors := list_upper_neighbors(G, layout, i, k, direction):
+            upper_neighbors = list_upper_neighbors(G, layout, i, k, direction)
+            if upper_neighbors:
                 f = floor(((len(upper_neighbors) + 1) / 2))
                 c = ceil(((len(upper_neighbors) + 1) / 2))
 
@@ -269,7 +271,7 @@ def algo_3(G, layout, delta, direction):
     return layout
 
 
-def _brand_koepf(G, delta=1.0):
+def brandes_koepf(G, delta=1.0):
     original_layout = Layout()
 
     # Add Node in to the layers datastructurs
@@ -333,7 +335,7 @@ def _brand_koepf(G, delta=1.0):
     return G
 
 
-def _draw_graph(G, path, figsize):
+"""def _draw_graph(G, path, figsize):
     colors = [G[u][v]['color'] for u, v in G.edges()]
 
     pos = {}
@@ -378,4 +380,4 @@ def run(path, graph_key, figsize, use_results=True, delta=1):
     nx.readwrite.write_gpickle(G, result_path.joinpath('graph.dat'))
     plt.close()
 
-    print(f"\rDone! {file_name} | {graph_key}", end='\n')
+    print(f"\rDone! {file_name} | {graph_key}", end='\n')"""
