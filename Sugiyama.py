@@ -3,7 +3,7 @@ import random
 from remove_cycles import remove_cycles
 from assign_levels import longest_path
 from global_sifting import GlobalSifting
-#from brandes_koepf import _brand_koepf
+from brandes_koepf import brandes_koepf
 import logging
 
 logger = logging.getLogger('draw graphs')
@@ -22,5 +22,5 @@ def Sugiyama(G, distance: int = 1):
     
     global_sifting = GlobalSifting(G)
     G = global_sifting.run(1) # parameter sets amount of sifting rounds
-    #G = _brand_koepf(G, 1)
+    G = brandes_koepf(G, 1)
     return G
