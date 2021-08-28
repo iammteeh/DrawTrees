@@ -60,7 +60,7 @@ def parse_input():
             if re.match('.*\.graphml', file):
                 graphml = {}
                 graphml['filename'] = file
-                graphml['graph'] = GraphML(filepath + file).to_graph(multigraph_key) # TODO set argument variable for multigraph key and rm perma key 'method-call'
+                graphml['graph'] = GraphML(file).to_graph(multigraph_key) # TODO set argument variable for multigraph key and rm perma key 'method-call'
                 graphml['graph_type'] = 'DiGraph'
 
                 graphlist.append(graphml)
@@ -136,7 +136,7 @@ def main():
         filehandler.setFormatter(logging_format)
         logger.addHandler(filehandler)
         
-        path_to_file = filepath + graph['filename']
+        path_to_file = graph['filename']
         savefile = './output/' + graph['filename'] + '.png'
         
         pos = assign_layout(graph['graph'], graph['graph_type'])
