@@ -124,13 +124,17 @@ def draw_graph(graph, logger):
     print('run ' + str(graph))
     # add logging handler to output logging in separate file
     filename = graph['filename'].split('/') # split dir from filename
+    if len(filename) == 1:
+        filename = filename[0] # if no relative dirs found take first element
+    else:
+        filename = filename[len(filename)] # if relative dirs found take last element
 
-    filehandler = logging.FileHandler('./output/' + filename[1] + '.log', mode='w') # filename[1] takes only the filename
+    filehandler = logging.FileHandler('./output/' + filename + '.log', mode='w') # filename[1] takes only the filename
     filehandler.setLevel(logging.DEBUG)
     filehandler.setFormatter(logging_format)
     logger.addHandler(filehandler)
     
-    savefile = './output/' + graph['filename'] + '.png'
+    savefile = './output/' + filename + '.png'
     
     pos = assign_layout(graph['graph'], graph['graph_type'])
     
@@ -164,13 +168,13 @@ def main():
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         graphs = {executor.submit(draw_graph, graph, logger): graph for graph in graphlist}
         for graph in concurrent.futures.as_completed(graphs):
-            graph = graphs[graph]
+            result = graphs[graph]
             try:
-                graph.result()
+                data = graph.result()
             except Exception as exc:
-                print('couldn\'t finish ' + str(graph))
+                print('couldn\'t finish ' + str(result, exc))
             else:
-                print('finished ' + str(graph))
+                print('finished ' + str(data))
 
     #for thread in threads:
         #thread.start()
