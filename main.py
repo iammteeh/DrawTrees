@@ -117,7 +117,7 @@ def assign_layout(G, graph_type):
         y_attributes = nx.get_node_attributes(G, 'y')
         pos_dict = dict()
         for node in G.nodes:
-            pos_dict[node] = (x_attributes[node] * 10, y_attributes[node] * 5)
+            pos_dict[node] = (x_attributes[node] * 10, -y_attributes[node] * 5)
         return pos_dict
 
 def draw_graph(graph, logger):
