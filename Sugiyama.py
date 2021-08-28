@@ -17,7 +17,7 @@ def Sugiyama(G, distance: int = 1):
     for node in G.nodes:
         x = 0
         #nx.set_node_attributes(G, { node: x }, 'x')
-        nx.set_node_attributes(G, { node: lvl_dict[node] }, 'y')
+        nx.set_node_attributes(G, { node: -lvl_dict[node] }, 'y')
         x += distance
     
     global_sifting = GlobalSifting(G)
