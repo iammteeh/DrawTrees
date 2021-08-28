@@ -1,6 +1,8 @@
 import os, sys
 from os import listdir
 from os.path import isfile, join
+import threading
+import concurrent.futures
 import logging
 from argparse import ArgumentParser, FileType
 import re
@@ -118,6 +120,33 @@ def assign_layout(G, graph_type):
             pos_dict[node] = (x_attributes[node] * 10, y_attributes[node] * 5)
         return pos_dict
 
+def draw_graph(graph, logger):
+    print('run ' + str(graph))
+    # add logging handler to output logging in separate file
+    filename = graph['filename'].split('/') # split dir from filename
+
+    filehandler = logging.FileHandler('./output/' + filename[1] + '.log', mode='w') # filename[1] takes only the filename
+    filehandler.setLevel(logging.DEBUG)
+    filehandler.setFormatter(logging_format)
+    logger.addHandler(filehandler)
+    
+    savefile = './output/' + graph['filename'] + '.png'
+    
+    pos = assign_layout(graph['graph'], graph['graph_type'])
+    
+    # plotting
+    plt.figure(1, figsize=(scale_x, scale_y))
+    nx.draw(graph['graph'], pos=pos)
+    plt.savefig(savefile, format='png', dpi=60)
+    print("Figure saved in", savefile)
+    if show_graph:
+        plt.show()
+    plt.clf()
+
+    # remove handler 
+    logger.removeHandler(filehandler)
+
+
 def main():
     # set logging
     logger = logging.getLogger('draw graphs')
@@ -128,31 +157,24 @@ def main():
     logger.addHandler(streamhandler)
 
     graphlist = parse_input()
-    for graph in graphlist:
-        print('run ' + str(graph))
-        # add logging handler to output logging in separate file
-        filename = graph['filename'].split('/') # split dir from filename
+    threads = []
+    #for graph in graphlist:
+        #current_thread = threading.Thread(target=draw_graph, args=(graph, logger))
+        #threads.append(current_thread)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        graphs = {executor.submit(draw_graph, graph, logger): graph for graph in graphlist}
+        for graph in concurrent.futures.as_completed(graphs):
+            graph = graphs[graph]
+            try:
+                graph.result()
+            except Exception as exc:
+                print('couldn\'t finish ' + str(graph))
+            else:
+                print('finished ' + str(graph))
 
-        filehandler = logging.FileHandler('./output/' + filename[1] + '.log', mode='w') # filename[1] takes only the filename
-        filehandler.setLevel(logging.DEBUG)
-        filehandler.setFormatter(logging_format)
-        logger.addHandler(filehandler)
-        
-        savefile = './output/' + graph['filename'] + '.png'
-        
-        pos = assign_layout(graph['graph'], graph['graph_type'])
-        
-        # plotting
-        plt.figure(1, figsize=(scale_x, scale_y))
-        nx.draw(graph['graph'], pos=pos)
-        plt.savefig(savefile, format='png', dpi=60)
-        print("Figure saved in", savefile)
-        if show_graph:
-            plt.show()
-        plt.clf()
-
-        # remove handler 
-        logger.removeHandler(filehandler)
+    #for thread in threads:
+        #thread.start()
+        #thread.join()
 
 if __name__ == '__main__':
     main()
