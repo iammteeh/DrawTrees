@@ -195,18 +195,22 @@ def algo_1(G, layers):
     return layers
 
 
-def algo_2(G, layout: Layout, direction):
-    ver_range = range(1, len(layout) + 1)
+def algo_2(G, layout: Layout, direction): # Vertical Alignment
+    ver_range = range(1, len(layout))
 
     if Direction.UP in direction:
         ver_range = reversed(ver_range)
 
     # ----Algo. 2.------------------------
     for i in ver_range:
-        r = 0
-        hoz_range = range(1, len(layout[i]) + 1)
-
+        if Direction.UP in direction:
+            r = 0
+        else:
+            r = inf
+        
+        hoz_range = range(1, len(layout[i]))
         sign = 1
+        
         if Direction.LEFT in direction:
             hoz_range = reversed(hoz_range)
             sign = -1
@@ -235,7 +239,7 @@ def algo_2(G, layout: Layout, direction):
     return layout
 
 
-def algo_3(G, layout, delta, direction):
+def algo_3(G, layout, delta, direction): # Horizontal Compaction
     # ----Algo. 3.------------------------
     def place_block(v):
         if layout.x[v] is None:
@@ -271,7 +275,7 @@ def algo_3(G, layout, delta, direction):
     return layout
 
 
-def brandes_koepf(G, delta=1.0):
+def brandes_koepf(G, delta=1.0): # Horizontal Coordinate Assignment
     original_layout = Layout()
 
     # Add Node in to the layers datastructurs
