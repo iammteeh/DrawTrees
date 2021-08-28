@@ -34,7 +34,7 @@ def parse_input():
             if re.match('.*\.graphml', file):
                 graphml = {}
                 graphml['filename'] = file
-                graphml['graph'] = GraphML(filepath + file).to_graph(multigraph_key) # TODO set argument variable for multigraph key and rm perma key 'method-call'
+                graphml['graph'] = GraphML(file).to_graph(multigraph_key) # TODO set argument variable for multigraph key and rm perma key 'method-call'
                 graphml['graph_type'] = 'DiGraph'
 
                 graphlist.append(graphml)
@@ -56,7 +56,7 @@ def parse_input():
     elif options.files:
         print('run on ' + str(options.files))
         for file in options.files:
-            file = str(file.name)
+            file = str(file.name) # file.name takes the relative path from the entrypoint
             if re.match('.*\.graphml', file):
                 graphml = {}
                 graphml['filename'] = file
@@ -131,12 +131,13 @@ def main():
     for graph in graphlist:
         print('run ' + str(graph))
         # add logging handler to output logging in separate file
-        filehandler = logging.FileHandler('./output/' + graph['filename'] + '.log', mode='w')
+        filename = graph['filename'].split('/') # split dir from filename
+
+        filehandler = logging.FileHandler('./output/' + filename[1] + '.log', mode='w') # filename[1] takes only the filename
         filehandler.setLevel(logging.DEBUG)
         filehandler.setFormatter(logging_format)
         logger.addHandler(filehandler)
         
-        path_to_file = graph['filename']
         savefile = './output/' + graph['filename'] + '.png'
         
         pos = assign_layout(graph['graph'], graph['graph_type'])
