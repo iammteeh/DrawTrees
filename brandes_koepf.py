@@ -218,13 +218,13 @@ def algo_2(G, layout: Layout, direction): # Vertical Alignment
         for k in hoz_range:
             upper_neighbors = list_upper_neighbors(G, layout, i, k, direction)
             if upper_neighbors:
-                f = floor(((len(upper_neighbors) + 1) / 2))
-                c = ceil(((len(upper_neighbors) + 1) / 2))
+                f = floor(((len(upper_neighbors)) / 2))
+                c = ceil(((len(upper_neighbors)) / 2))
 
                 vk = layout[i].node_by_index(k)
                 for m in [f, c]:
                     if layout.align[vk] == vk:
-                        um = upper_neighbors[m - 1]
+                        um = upper_neighbors[m]
 
                         if Direction.LEFT in direction:
                             edge = (vk, um)
