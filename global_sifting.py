@@ -67,7 +67,7 @@ class GlobalSifting:
         return self.G
 
     def sifting_step(self, block_list, block):
-        logger.info('sifting step for block: ' + str(block))
+        logger.debug('sifting step for block: ' + str(block))
         self.block_list.remove(block)
         self.block_list.insert(0, block)
         self.sort_adjacencies(block_list)
@@ -81,7 +81,7 @@ class GlobalSifting:
                 p_star = p
     
         # move block "A" to position of block on position p_star
-        logger.info('move block A: ' + str(block))
+        logger.debug('move block A: ' + str(block))
         cache_block = self.block_list.index(block)
         index_block_p_star = self.block_list.index(self.block_list[p_star])
         block_list.remove(block)
@@ -90,7 +90,7 @@ class GlobalSifting:
         return block_list
 
     def sort_adjacencies(self, block_list):
-        logger.info('sort adjacencies')
+        logger.debug('sort adjacencies')
         logger.debug('block_list: ' + str(block_list))
         logger.debug('block_dict: ' + str(self.block_dict))
         # for reference
@@ -168,7 +168,7 @@ class GlobalSifting:
         logger.debug('length N_plus' + str(len(self.N_plus.keys())))
         
     def sifting_swap(self, A, B):
-        logger.info('sifting swap for block A=' + str(A) + ' and Block B=' + str(B))
+        logger.debug('sifting swap for block A=' + str(A) + ' and Block B=' + str(B))
         L = set()
         Delta = 0
         y_attributes = nx.get_node_attributes(self.G, 'y')
@@ -218,7 +218,7 @@ class GlobalSifting:
         return Delta
 
     def uswap(self, a, b, direction):
-        logger.info('uswap for nodes ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
+        logger.debug('uswap for nodes ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
         logger.debug('length block_list:' + str(len(self.block_list)))
         logger.debug('length N_minus' + str(len(self.N_minus.keys())))
         logger.debug('length N_plus' + str(len(self.N_plus.keys())))
@@ -255,7 +255,7 @@ class GlobalSifting:
         return c
     
     def update_adjacencies(self, a, b, direction):
-        logger.info('update adjacencies for node ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
+        logger.debug('update adjacencies for node ' + str(a) + ' and ' + str(b) + ' in direction ' + str(direction))
         i = 0
         j = 0
         z = int()
