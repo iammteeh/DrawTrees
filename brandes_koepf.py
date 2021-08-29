@@ -176,7 +176,7 @@ def algo_1(G, layers):
     for i in range(2, len(layers) - 1):
         k0 = 0
         l = 1
-        for l1 in range(1, len(layers[i + 1]) + 1):
+        for l1 in range(1, len(layers[i + 1])):
             inner_nodes = [(u, v) for u, v in G.in_edges(layers[i + 1][l1]) if "d" in u and "d" in v]
             if l1 == len(layers[i + 1]) or inner_nodes:
                 k1 = len(layers[i])
@@ -184,7 +184,7 @@ def algo_1(G, layers):
                     vl1i1 = layers[i + 1][l1]
                     upper_neighbor, _ = inner_nodes[0]
                     k1 = layers.pos(upper_neighbor)
-                while l < l1:
+                while l <= l1:
                     for vk, vl in G.in_edges(layers[i + 1][l]):
                         k = layers.pos(vk)
                         if k < k0 or k > k1:
