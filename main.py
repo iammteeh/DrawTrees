@@ -130,7 +130,7 @@ def draw_graph(graph, logger):
         filename = filename[len(filename)-1] # if relative dirs found take last element
 
     filehandler = logging.FileHandler('./output/' + filename + '.log', mode='w') # filename[1] takes only the filename
-    filehandler.setLevel(logging.WARNING)
+    filehandler.setLevel(logging.INFO)
     filehandler.setFormatter(logging_format)
     logger.addHandler(filehandler)
     
