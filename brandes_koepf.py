@@ -224,7 +224,7 @@ def algo_2(G, layout: Layout, direction): # Vertical Alignment
                 vk = layout[i].node_by_index(k)
                 for m in [f, c]:
                     if layout.align[vk] == vk:
-                        um = upper_neighbors[m]
+                        um = upper_neighbors[m-1]
 
                         if Direction.LEFT in direction:
                             edge = (vk, um)
