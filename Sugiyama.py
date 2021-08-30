@@ -23,7 +23,7 @@ def Sugiyama(G, distance: int = 1):
         x += distance
     logger.info('start global sifting')
     global_sifting = GlobalSifting(G)
-    G = global_sifting.run(3) # parameter sets amount of sifting rounds
+    G = global_sifting.run(1) # parameter sets amount of sifting rounds
     logger.info('align and compactify graph')
     G = brandes_koepf(G, 1)
     return G
